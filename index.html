@@ -1,0 +1,84 @@
+<!--Audrey Fifer (aef3ha)
+    Inclass Assignment #4
+    2/14/19
+  -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- required to handle IE -->
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" /> -->  
+    <link rel="stylesheet" href="bootstrap-4.0.0/css/bootstrap.min.css" /> <!--if you downloaded bootstrap to your computer -->
+    <link rel="stylesheet" href="styles/main.css">
+
+    <!-- required scripts for IE --> 
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+          
+    <title>Bootstrap example</title>
+        
+  </head>
+
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>-->
+    <script src="bootstrap-4.0.0/js/bootstrap.min.js"></script>
+   <nav class="navbar navbar-expand-md bg-custom-header navbar-dark">
+          <a class="navbar-brand" href="#">
+            <img src="images/faces.png" id="logo_image" alt="image showing logo" class="img-responsive"><!--</br>-->
+            <span id="logo-text">MovieFinder</span>
+            </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <button class="nav-link" href="#">Login</button>
+              </li>                                     
+              <li class="nav-item"> 
+                <button class="nav-link" href="#">Sign Up</button>
+              </li>
+            </ul>
+          </div>  
+        </nav>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>One line at a time</h1>
+    <p>Brief introduction to your site (a few sentences or phrases</p>
+    <p>
+      <a class ="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    </p>
+  </div>
+</div>
+   <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Cloud Service</h3>
+        <!--<img src="" width="90%"/>-->
+        <p>Brief description about the cloud service your company provides. Include some highlights that draw customers' attention.
+        </p>
+      </div>
+      <div class="col-md-4">
+        <h3>Reverse Engineering </h3>
+        <p>Brief description about the reverse engineering your company provides. Include some highlights that draw customers' attention.
+        </p>
+      </div>
+      <div class="col-md-4">
+        <h3>Crowd Testing</h3>
+        <p>Brief description about the crowd testing your company provides. Include some highlights that draw customers' attention.
+        </p>
+      </div>
+    </div>
+   </div>
+
+  </body>
+</html>
