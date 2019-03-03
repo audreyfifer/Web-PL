@@ -1,0 +1,87 @@
+<!--Audrey Fifer (aef3ha)
+    Bittania Teshome 
+  -->
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- required to handle IE -->
+          
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+      <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" /> -->  
+      <link rel="stylesheet" href="bootstrap-4.0.0/css/bootstrap.min.css" /> <!--if you downloaded bootstrap to your computer -->
+      <link rel="stylesheet" href="styles/main.css">
+  
+      <!-- required scripts for IE --> 
+      <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+            
+      <title>MovieFinder</title>
+          
+    </head>
+  
+    <body>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>-->
+      <script src="bootstrap-4.0.0/js/bootstrap.min.js"></script>
+      <nav class="navbar navbar-expand-md bg-custom-header navbar-dark">
+            <a class="navbar-brand" href="#">
+              <img src="images/faces.png" id="logo_image" alt="image showing logo" class="img-responsive"><!--</br>-->
+              <span id="logo-text">MovieFinder</span>
+              </a>
+            <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
+                <a class="nav-link" id="nav-link-text1" href="home.html">Home</a>
+            </div>  
+        </nav>
+    
+    <form name="loginform" class="form-container-login" ></form>
+    <!--<div class="imgcontainer">
+        <img src="images/login-profile.png" alt="login profile image" class="login-profile">
+    </div>
+    -->
+
+    <div class="login-container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <img src="images/login-profile.png" alt="login profile image" class="login-profile">
+            </div>
+            
+        </div>
+        <div class="row justify-content-center">
+            
+            <div class="col-md-4">
+                <label for="username" id="username"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="username" required>
+            </div> 
+            
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <label for="psw" id="psw"><b>Password </b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+            </div>
+            
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <input type="button" class="login-button" onclick="location.href='loggedin_home.html'" value='Login'>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <a class="psw" a href="#">Forgot password?</a>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <a class="register" a href="#">Don't have an account? Register here.</a>
+            </div>
+        </div>
+    </div>
+    </form>
+    </body>
+    </html>
