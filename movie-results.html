@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="bootstrap-4.0.0/css/bootstrap.min.css" /> <!--if you downloaded bootstrap to your computer -->
     
     <link rel="stylesheet" href="styles/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>-->
+    <script src="bootstrap-4.0.0/js/bootstrap.min.js"></script>
 
     <!-- required scripts for IE --> 
     <!--[if lt IE 9]>
@@ -23,13 +26,11 @@
     <![endif]-->
           
     <title>MovieFinder</title>
-        
+    
   </head>
 
-  <body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>-->
-    <script src="bootstrap-4.0.0/js/bootstrap.min.js"></script>
+  <body onload="loadMovies()">
+    
    <nav class="navbar navbar-expand-md bg-custom-header navbar-dark">
       <a class="navbar-brand" href="home.html">
         <img src="images/faces.png" id="logo_image" alt="image showing logo" class="img-responsive"><!--</br>-->
@@ -51,8 +52,9 @@
       </div>  
     </nav>
 
-        <div class="movie-results-container" style="display:block">
-            <h1 id="search-title" style="margin-left:10px;margin-top:10px;">Search Results</h1>  
+        <div class="movie-results-container" id="movie-results-container" style="display:block">
+            <h1 id="search-title" style="margin-left:10px;margin-top:10px;">Search Results</h1> 
+            <!-- 
             <div class="movie-item" style="display:block">
               <img src = "images/movie-placeholder.png" id="movie-result" alt="image showing logo" class="img-responsive" style="float:left">
               <span id="movie-info" style="float:left">
@@ -66,6 +68,7 @@
               <a class="btn btn-success" href="#" style="float:right;margin-right:5%">
                     <i class="fa fa-plus-square fa-lg"></i>  Add to My Movies</a>
             </div>
+          
             <div class="movie-item" style="display:block; clear:both;">
                 <img src = "images/movie-placeholder.png" id="movie-result" alt="image showing logo" class="img-responsive" style="float:left">
                 <span id="movie-info" style="float:left">
@@ -122,6 +125,7 @@
                 <a class="btn btn-success" href="#" style="float:right;margin-right:5%">
                         <i class="fa fa-plus-square fa-lg"></i>  Add to My Movies</a>
           </div> 
+        -->
           
         </div>   
         <nav aria-label="Page navigation example" style="clear:both; margin-top:10%">
@@ -144,10 +148,147 @@
             </nav>
 
         <script>
+          /*
             document.getElementById("the-patriot").addEventListener("click", goToMovie);
             function goToMovie(){
                 window.location.href = 'the-patriot.html';
             }
+            */
+            function loadMovies(){
+              
+              var container = document.getElementById("movie-results-container");
+             //var movies = getExampleMovies();
+              
+              var i;
+              for (i=0;i<movies.length;i++){
+                //movie description - div
+                var divMovie = document.createElement('div');
+                var m = movies[i];
+                divMovie.innerHTML = m.title + " (" + m.year + ") - " + m.score + "</br>" + "Actors: " + m.actors + "</br>Directors: " + m.directors + "</br>Genre: " + m.genre;
+                container.appendChild(divMovie);
+                
+                //span surrounding movie description
+                var span = document.createElement('span');
+                span.id = "movie-info";
+                span.style = "float:left";
+                span.appendChild(divMovie);
+
+                //image of poster
+                var img = document.createElement('img');
+                img.src = "images/movie-placeholder.png";
+                img.id = "movie-result";
+                img.alt = "image showing movie poster";
+                img.class="img-responsive";
+                img.style="float:left";
+
+                //button object 
+                var a = document.createElement('a');
+                a.class = "btn btn-success";
+                a.href = "my-movies.html";
+                a.style = "float:right; margin-right:5%";
+                
+                var btn = document.createElement('img');
+                btn.src = "images/add-to-my-movies-button.png";
+                btn.style="height:60%; width:60%; border-radius:10px;float:right;margin-right:10%";
+                
+                
+                a.appendChild(btn);
+
+                              
+                /*btn.id = "addButton";
+                btn.class = "fa fa-plus-square fa-lg";
+                
+                var styles = {
+                      content: "\fofe"; 
+                      font-family: FontAwesome;
+                      font-style: normal;
+                      font-weight: normal; 
+                      text-decoration: inherit;
+                      color: #000;
+                      font-size: 18px;
+                      padding-right: 0.5em;
+                      position: absolute;
+                      top: 10px;
+                      left: 0;
+              };
+                $("#addButton").css(styles);
+                */
+                a.appendChild(btn);
+                
+                //movie container - div
+                var divMovieItem = document.createElement('div');
+                divMovieItem.class="movie-item";
+                divMovieItem.style="display:block; clear:both; padding-top: 2%; padding-left: 5%;";
+
+                divMovieItem.appendChild(img);
+                divMovieItem.appendChild(span);
+                divMovieItem.appendChild(a);
+                container.appendChild(divMovieItem);
+                
+              }
+
+
+            }
+            
+            
+            var movies=[
+            {
+              title: "The Patriot",
+              year: "2000",
+              actors: ["Mel Gibson", "Heath Ledger", "Joely Richardson", "Jason Isaacs"],
+              directors: ["Roland Emmerich"],
+              score: "72%",
+              genre: ["Action", "Drama", "History"],
+              rating: "R",
+              duration: "165",
+              synopsis: "Peaceful farmer Benjamin Martin is driven to lead the Colonial Militia during the American Revolution when a sadistic British officer murders his son."
+            },
+            {
+              title: "The Godfather",
+              year: "1972",
+              actors: ["Marlon Brando", "Al Pacino", "James Caan", "Robert Duvall"],
+              directors: ["Francis Ford Coppola"],
+              score: "92%",
+              genre: ["Crime", "Drama"],
+              rating: "R",
+              duration: "175",
+              synopsis: ""
+            },
+            {
+              title: "Mulan",
+              year: "1998",
+              actors: ["Miguel Ferrer", "Eddie Murphy", "Lea Salonga"],
+              directors: ["Tony Bancroft", "Barry Cook"],
+              score: "76%",
+              genre: ["Animation", "Adventure", "Family"],
+              rating: "G",
+              duration: "88",
+              synopsis: ""
+            },
+            {
+              title: "Edward Scissorhands",
+              year: "1990",
+              actors: ["Johnny Depp", "Winona Ryder", "Dianne Wiest", "Anthony Michael Hall"],
+              directors: ["Tim Burton"],
+              score: "79%",
+              genre: ["Drama", "Fantasy", "Romance"],
+              rating: "PG-13",
+              duration: "105",
+              synopsis: ""
+            },
+            {
+              title: "The Breakfast Club",
+              year: "1985",
+              actors: ["Molly Ringwald", "Emilio Estevez", "Anthony Michael Hall", "Judd Nelson"],
+              directors: ["John Hughes"],
+              score: "79%",
+              genre: ["Comedy", "Drama"],
+              rating: "R",
+              duration: "97",
+              synopsis: ""
+            }
+            ];
+            
             
         </script>
   </body>
