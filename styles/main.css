@@ -77,9 +77,11 @@ img.login-profile {
   }
   
 .search-button-class{
-    margin-left:auto;
-    margin-right:auto;
-    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 #search-title{
@@ -89,7 +91,7 @@ img.login-profile {
 
 .container{
     margin-left:10px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 
@@ -97,16 +99,37 @@ img.login-profile {
     margin-left:30px;
     min-height:100%;
 }
+label{
+    margin-bottom:3px;
+}
 .form-group{
     font-size:2vmin;
+    margin-bottom:5px; 
 }
+
 #nav-link-text1,
 #nav-link-text2{
     color:#fff;
+    background-color: #354753;
+    border-width: 1px;
+    border-style:solid;
+    border-color:rgba(255,255,255,.5);
     font-size:1rem;
-    padding: 2px;
+    padding-left:10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 10px;
     margin-right:10px;
+    margin-bottom:3px;
+    border-radius:5px;
 }
+#nav-link-text1:hover,
+#nav-link-text2:hover,
+#nav-link-text1:focus,
+#nav-link-text2:focus{
+    background-color:#536f82;
+}
+
 .navbar-brand {
     padding: 0px; /* firefox bug fix */
   }

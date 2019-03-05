@@ -110,11 +110,13 @@
               <span class="error" id="directors-note" value="" style="color:red"></span>
             </div> 
             
-            <div class="search-button">
-            <input type="button" class="btn btn-light" id="search-button" value="Search" onclick="submitSearch()"/>
-            </div>
+            <div class="search-button-class">
+              <input type="button" class="btn btn-dark" id="search-button" value="Search" onclick="submitSearch()"/>
+              </div>
           </form>
+          
         </div>
+        
         
         <script type="text/javascript">
           function submitSearch() {
@@ -131,13 +133,12 @@
               alert("Please enter search criteria");
               return;
             }
+            isValidDuration = (s)=> {return s.match(/^[0-9]+$/);};
+            isValidDate = (s) => {return s.match(/^([\t\s]*([12][0-9]{3}[s]?|[12][0-9]{3}'s|[12][0-9]{3}-[12][0-9]{3}|[0-9]{1}0s|[0-9]{1}0's)[\t\s]*)$/);};
             if (release!="" && !isValidDate(release)){
               document.getElementById("release-date-note").innerHTML = "Please enter date in one of the following formats: 1990, 1990-2000, 1990s, 1990's, 90s, 90's";
               tagged = true;
             }
-            
-            isValidDuration = (s)=>{return s.match(/^[0-9]+$/);};
-            isValidDate = (s) => {return s.match(/^([\t\s]*([12][0-9]{3}[s]?|[12][0-9]{3}'s|[12][0-9]{3}-[12][0-9]{3}|[0-9]{1}0s|[0-9]{1}0's)[\t\s]*)$/);};
             if (duration!="" && !isValidDuration(duration)){
               document.getElementById("duration-note").innerHTML = "Please enter a non-negative value.";
               tagged = true;
