@@ -164,7 +164,17 @@
                 //movie description - div
                 var divMovie = document.createElement('div');
                 var m = movies[i];
-                divMovie.innerHTML = m.title + " (" + m.year + ") - " + m.score + "</br>" + "Actors: " + m.actors + "</br>Directors: " + m.directors + "</br>Genre: " + m.genre;
+                var parseName = m.title.split(" ");
+                var parsedName="";
+                  for(j = 0; j < m.title.length; j++) {
+                      parsedName += parseName[j];
+                  }
+                
+                  divMovie.innerHTML = "<span id= " + parsedName +  " style='text-decoration:underline;'>" + m.title + "</span>" + " (" + m.year + ") - " + m.score + "</br>" + "Actors: " + m.actors + "</br>Directors: " + m.directors + "</br>Genre: " + m.genre;
+                
+                document.getElementById(parsedName).addEventListener("click", function() {
+                    window.location.href = parsedName + '.html';
+                }); 
                 container.appendChild(divMovie);
                 
                 //span surrounding movie description
