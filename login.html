@@ -55,20 +55,34 @@
             
             <div class="col-md-4">
                 <label for="username" id="username"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="username" required>
+                <input type="text" id="username-input" placeholder="Enter Username" name="username" required>
             </div> 
             
         </div>
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <label for="psw" id="psw"><b>Password </b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
+                <input type="password" id="psw-input" placeholder="Enter Password" name="psw" required>
             </div>
             
         </div>
         <div class="row justify-content-center">
             <div class="col-md-4">
-                <input type="button" class="login-button" onclick="location.href='loggedin_home.html'" value='Login'>
+                <input type="button" class="login-button" onclick="(function(){
+                    var psw = document.getElementById('psw-input').value;
+                    var username = document.getElementById('username-input').value;
+                    if (psw === '' && username === ''){
+                        document.getElementById('login-note').innerHTML = 'Please enter a username and password.';
+                        return;
+                    }
+                    else{
+                    location.href='profile.html';
+                    }})();" value='Login'> <!--location.href='loggedin_home.html'-->
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <span class="error" id="login-note" value="" style="color:red"></span>
             </div>
         </div>
         <div class="row justify-content-center">
@@ -83,5 +97,10 @@
         </div>
     </div>
     </form>
+    <script>
+
+    //var movie = document.getElementById("movie-title-input").value;
+    </script>
+          
     </body>
-    </html>
+</html>

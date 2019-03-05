@@ -1,3 +1,7 @@
+
+a{
+    margin:0;
+}
 #logo_image{
     height: 8%;
     width: 8%;
@@ -18,9 +22,33 @@
     height: 8%;
     width: 8%;
     margin-left:80%;
-    padding:0%
+    padding:0%;
 }
 
+#profile-image-main-screen{
+    height: 10%;
+    width: 10%;
+    margin: 2%;
+    
+}
+#movie-result{
+    height: 8%;
+    width: 8%;
+    margin-right: 20px;
+}
+
+.btn-success{
+    background-color:#354753;
+    border-color:#354753;
+}
+.btn-danger{
+    background-color:#354753;
+    border-color:#354753;
+}
+.movie-item{
+    padding-top: 2%;
+    padding-left: 5%;
+}
 .col-md-4{
     display: block;
     margin: auto;

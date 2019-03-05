@@ -55,7 +55,7 @@
             <div class="form-group">
               <label for="movie-title">Title</label>
               <input type="text" id="movie-title-input" class="form-control" name="desc" />
-              <span class="error" id="movie-title-note" value=""></span>        
+              <span class="error" id="movie-title-note" value="" style="color:red"></span>        
             </div>
             
             <div class="form-group">
@@ -63,8 +63,14 @@
               <select id="genre" class="form-control" >
                   <option value="select-genre" selected="selected" ></option>
                   <option value="action" >Action</option>  <!-- set default selection -->
+                  <option value="adventure">Adventure</option>
+                  <option value="animation">Animation</option>
                   <option value="comedy">Comedy</option>
+                  <option value="crime">Crime</option>
                   <option value="drama">Drama</option>
+                  <option value="family">Family</option>
+                  <option value="fantasy">Fantasy</option>
+                  <option value="history">History</option>
                   <option value="horror">Horror</option>
                   <option value="romance">Romance</option>
                   <option value="romantic-comedy">Romantic Comedy</option>
@@ -73,9 +79,9 @@
             </div>
             
             <div class="form-group">
-              <label for="release-date">Release Date</label>
+              <label for="release-date">Release Date Year(s)</label>
               <input type="text" id="release-date-input" class="form-control" />
-              <span class="error" id="release-date-note" value=""></span>
+              <span class="error" id="release-date-note" value="" style="color:red"></span>
             </div> 
             <div class="form-group">
                 <label for="rating">Rating</label>
@@ -91,25 +97,59 @@
             <div class="form-group">
                 <label for="duration">Duration (minutes)</label>
                 <input type="text" id="duration-input" class="form-control" />
-              <span class="error" id="duration-note" value=""></span>
+              <span class="error" id="duration-note" value="" style="color:red"></span>
             </div> 
             <div class="form-group">
                 <label for="actors">Actors</label>
                 <input type="text" id="actors-input" class="form-control" />
-              <span class="error" id="actors-note" value=""></span>
+              <span class="error" id="actors-note" value="" style="color:red"></span>
             </div>  
             <div class="form-group">
                 <label for="directors">Directors</label>
                 <input type="text" id="directors-input" class="form-control" />
-              <span class="error" id="directors-note" value=""></span>
+              <span class="error" id="directors-note" value="" style="color:red"></span>
             </div> 
             
             <div class="search-button">
-            <input type="button" class="btn btn-light" id="search-button" value="Search" onclick=""/>
+            <input type="button" class="btn btn-light" id="search-button" value="Search" onclick="submitSearch()"/>
             </div>
           </form>
         </div>
         
+        <script type="text/javascript">
+          function submitSearch() {
+            var movie = document.getElementById("movie-title-input").value;
+            var release = document.getElementById("release-date-input").value;
+            var genre = document.getElementById("genre").value;
+            var rating = document.getElementById("rating").value;
+            var duration = document.getElementById("duration-input").value;
+            var actors = document.getElementById("actors-input").value;
+            var directors = document.getElementById("directors-input").value;
+            var tagged = false;
+
+            if (movie === "" && release === "" && genre === "select-genre" && rating === "select-rating" && duration === "" && actors === "" && directors === ""){
+              alert("Please enter search criteria");
+              return;
+            }
+            if (release!="" && !isValidDate(release)){
+              document.getElementById("release-date-note").innerHTML = "Please enter date in one of the following formats: 1990, 1990-2000, 1990s, 1990's, 90s, 90's";
+              tagged = true;
+            }
+            
+            isValidDuration = (s)=>{return s.match(/^[0-9]+$/);};
+            isValidDate = (s) => {return s.match(/^([\t\s]*([12][0-9]{3}[s]?|[12][0-9]{3}'s|[12][0-9]{3}-[12][0-9]{3}|[0-9]{1}0s|[0-9]{1}0's)[\t\s]*)$/);};
+            if (duration!="" && !isValidDuration(duration)){
+              document.getElementById("duration-note").innerHTML = "Please enter a non-negative value.";
+              tagged = true;
+            }
+            if (tagged){
+                return;
+            }
+            window.location.href = 'movie-results.html';
+          }
+          
+            
+      </script>
 
   </body>
 </html>
