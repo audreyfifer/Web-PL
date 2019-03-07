@@ -53,80 +53,7 @@
     </nav>
 
         <div class="movie-results-container" id="movie-results-container" style="display:block">
-            <h1 id="search-title" style="margin-left:10px;margin-top:10px;">Search Results</h1> 
-            <!-- 
-            <div class="movie-item" style="display:block">
-              <img src = "images/movie-placeholder.png" id="movie-result" alt="image showing logo" class="img-responsive" style="float:left">
-              <span id="movie-info" style="float:left">
-                <div >
-                    <a id="the-patriot" style="text-decoration:underline;">The Patriot</a> <a>(2000)</a>    -    <a>72%</a></br>
-                    <a>Starring: Mel Gibson, Heath Ledger, Joely Richardson, Jason Isaacs</a>, etc</br>
-                    <a>Director: Roland Emmerich</a></br>
-                    <a>Action, Drama, History</a></br>
-                </div>
-              </span>
-              <a class="btn btn-success" href="#" style="float:right;margin-right:5%">
-                    <i class="fa fa-plus-square fa-lg"></i>  Add to My Movies</a>
-            </div>
-          
-            <div class="movie-item" style="display:block; clear:both;">
-                <img src = "images/movie-placeholder.png" id="movie-result" alt="image showing logo" class="img-responsive" style="float:left">
-                <span id="movie-info" style="float:left">
-                <div >
-                    <a>The Godfather</a> <a>(1972)</a>    -    <a>92%</a></br>
-                    <a>Starring: Marlon Brando, Al Pacino, James Caan, Robert Duvall</a>, etc</br>
-                    <a>Director: Francis Ford Coppola</a></br>
-                    <a>Crime, Drama</a></br>
-
-                </div>
-                </span>
-                <a class="btn btn-success" href="#" style="float:right;margin-right:5%">
-                        <i class="fa fa-plus-square fa-lg"></i>  Add to My Movies</a>
-          </div> 
-          <div class="movie-item" style="display:block; clear:both;">
-                <img src = "images/movie-placeholder.png" id="movie-result" alt="image showing logo" class="img-responsive" style="float:left">
-                <span id="movie-info" style="float:left">
-                <div >
-                    <a>Mulan</a> <a>(1998)</a>    -    <a>76%</a></br>
-                    <a>Starring: Miguel Ferrer, Eddy Murphy, Lea Salonga</a>, etc</br>
-                    <a>Director: Tony Bancroft, Barry Cook</a></br>
-                    <a>Animation, Adventure, Family</a></br>
-
-                </div>
-                </span>
-                <a class="btn btn-success" href="#" style="float:right;margin-right:5%">
-                        <i class="fa fa-plus-square fa-lg"></i>  Add to My Movies</a>
-          </div> 
-          <div class="movie-item" style="display:block; clear:both;">
-                <img src = "images/movie-placeholder.png" id="movie-result" alt="image showing logo" class="img-responsive" style="float:left">
-                <span id="movie-info" style="float:left">
-                <div >
-                    <a>Edward Scissorhands</a> <a>(1990)</a>    -    <a>79%</a></br>
-                    <a>Starring: Johnny Depp, Winona Ryder, Dianne Wiest, Anthony Michael Hall</a>, etc</br>
-                    <a>Director: Tim Burton</a></br>
-                    <a>Drama, Fantasy, Romance</a></br>
-
-                </div>
-                </span>
-                <a class="btn btn-success" href="#" style="float:right;margin-right:5%">
-                        <i class="fa fa-plus-square fa-lg"></i>  Add to My Movies</a>
-          </div> 
-          <div class="movie-item" style="display:block; clear:both;">
-                <img src = "images/movie-placeholder.png" id="movie-result" alt="image showing logo" class="img-responsive" style="float:left">
-                <span id="movie-info" style="float:left">
-                <div >
-                    <a>The Breakfast Club</a> <a>(1985)</a>    -    <a>79%</a></br>
-                    <a>Starring: Molly Ringwald, Emilio Estevez, Anthony Michael Hall, Judd Nelson</a>, etc</br>
-                    <a>Director: Tim Burton</a></br>
-                    <a>Drama, Fantasy, Romance</a></br>
-
-                </div>
-                </span>
-                <a class="btn btn-success" href="#" style="float:right;margin-right:5%">
-                        <i class="fa fa-plus-square fa-lg"></i>  Add to My Movies</a>
-          </div> 
-        -->
-          
+            <h1 id="search-title" style="margin-left:10px;margin-top:10px;">Search Results</h1>           
         </div>   
         <nav aria-label="Page navigation example" style="clear:both; margin-top:10%">
             <ul class="pagination justify-content-center">
@@ -148,34 +75,33 @@
             </nav>
 
         <script>
-          /*
-            document.getElementById("the-patriot").addEventListener("click", goToMovie);
-            function goToMovie(){
-                window.location.href = 'the-patriot.html';
-            }
-            */
             function loadMovies(){
               
               var container = document.getElementById("movie-results-container");
-             //var movies = getExampleMovies();
-              
               var i;
               for (i=0;i<movies.length;i++){
-                //movie description - div
+                
+                //movie description div
                 var divMovie = document.createElement('div');
                 var m = movies[i];
                 var parseName = m.title.split(" ");
-                var parsedName="";
-                  for(j = 0; j < m.title.length; j++) {
-                      parsedName += parseName[j];
+                var parsedName = "";
+                  for(j = 0; j < parseName.length; j++) {
+                      parsedName += parseName[j].toLowerCase();
+                      if (j<parseName.length-1){
+                        parsedName += "-";
+                      }
                   }
-                
-                  divMovie.innerHTML = "<span id= " + parsedName +  " style='text-decoration:underline;'>" + m.title + "</span>" + " (" + m.year + ") - " + m.score + "</br>" + "Actors: " + m.actors + "</br>Directors: " + m.directors + "</br>Genre: " + m.genre;
-                
-                document.getElementById(parsedName).addEventListener("click", function() {
-                    window.location.href = parsedName + '.html';
-                }); 
-                container.appendChild(divMovie);
+                  console.log(parsedName);
+                spanName = document.createElement('span');
+                spanName.id = parsedName;
+                spanName.style="text-decoration:underline";
+                spanName.innerHTML = m.title;
+                spanRest = document.createElement('span');
+                spanRest.innerHTML = " (" + m.year + ") - " + m.score + "</br>" + "Actors: " + m.actors + "</br>Directors: " + m.directors + "</br>Genre: " + m.genre;
+                                
+                divMovie.appendChild(spanName);
+                divMovie.appendChild(spanRest);
                 
                 //span surrounding movie description
                 var span = document.createElement('span');
@@ -183,7 +109,7 @@
                 span.style = "float:left";
                 span.appendChild(divMovie);
 
-                //image of poster
+                //image of movie poster
                 var img = document.createElement('img');
                 img.src = "images/movie-placeholder.png";
                 img.id = "movie-result";
@@ -191,36 +117,16 @@
                 img.class="img-responsive";
                 img.style="float:left";
 
-                //button object 
+                //link object for button 
                 var a = document.createElement('a');
                 a.class = "btn btn-success";
                 a.href = "my-movies.html";
                 a.style = "float:right; margin-right:5%";
                 
+                //button object for adding movies to My Movies
                 var btn = document.createElement('img');
                 btn.src = "images/add-to-my-movies-button.png";
                 btn.style="height:60%; width:60%; border-radius:10px;float:right;margin-right:10%";
-                
-                
-                a.appendChild(btn);
-                /*btn.id = "addButton";
-                btn.class = "fa fa-plus-square fa-lg";
-                
-                var styles = {
-                      content: "\fofe"; 
-                      font-family: FontAwesome;
-                      font-style: normal;
-                      font-weight: normal; 
-                      text-decoration: inherit;
-                      color: #000;
-                      font-size: 18px;
-                      padding-right: 0.5em;
-                      position: absolute;
-                      top: 10px;
-                      left: 0;
-              };
-                $("#addButton").css(styles);
-                */
                 a.appendChild(btn);
                 
                 //movie container - div
@@ -232,7 +138,10 @@
                 divMovieItem.appendChild(span);
                 divMovieItem.appendChild(a);
                 container.appendChild(divMovieItem);
-                
+                console.log(parsedName + '.html');
+                document.getElementById(parsedName).addEventListener("click", (function(){
+                    window.location.href = this.id + '.html';
+                }), false); 
               }
 
 
