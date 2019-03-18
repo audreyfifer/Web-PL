@@ -49,6 +49,7 @@
       </div>  
     </nav>
 
+        <!--Search form for user-->
         <div class="container">
           <h1 id="search-title">Search</h1>       
           <form name="mainform" class="form-container" >
@@ -119,6 +120,13 @@
         
         
         <script type="text/javascript">
+
+          /* - verifies that:
+                1. at least one item is entered to search
+                2. release date is in the correct format (1990, 1990-2000, 1990s, 1990's, 90s, 90's) if entered
+                3. duration is a positive number 
+             - navigates to movie results page if inputs are valid
+          */
           function submitSearch() {
             var movie = document.getElementById("movie-title-input").value;
             var release = document.getElementById("release-date-input").value;
@@ -129,20 +137,31 @@
             var directors = document.getElementById("directors-input").value;
             var tagged = false;
 
+            // displays pop-up window if no search criteria is entered
             if (movie === "" && release === "" && genre === "select-genre" && rating === "select-rating" && duration === "" && actors === "" && directors === ""){
               alert("Please enter search criteria");
               return;
             }
+            
+            // returns true if duration is a positive number
             isValidDuration = (s)=> {return s.match(/^[0-9]+$/);};
+
+            // returns true if date is in correct format -- 1990, 1990-2000, 1990s, 1990's, 90s, 90's
             isValidDate = (s) => {return s.match(/^([\t\s]*([12][0-9]{3}[s]?|[12][0-9]{3}'s|[12][0-9]{3}-[12][0-9]{3}|[0-9]{1}0s|[0-9]{1}0's)[\t\s]*)$/);};
+            
+            // displays error for user if date isn't in correct format
             if (release!="" && !isValidDate(release)){
               document.getElementById("release-date-note").innerHTML = "Please enter date in one of the following formats: 1990, 1990-2000, 1990s, 1990's, 90s, 90's";
               tagged = true;
             }
+
+            // displays error for user if duration isn't in correct format
             if (duration!="" && !isValidDuration(duration)){
               document.getElementById("duration-note").innerHTML = "Please enter a non-negative value.";
               tagged = true;
             }
+
+            // doesn't navigate to results page if at least one error in input
             if (tagged){
                 return;
             }

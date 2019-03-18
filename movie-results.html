@@ -76,19 +76,28 @@
             </nav>
 
         <script>
+          // loads movies as html elements from movie list when page is loaded from search page
             function loadMovies(){
               
+              // finds root element for movies to be added to
               var container = document.getElementById("movie-results-container");
+              
+              // loops through all movies in movie list, creating separate movie html elements
               var i;
               for (i=0;i<movies.length;i++){
-                
-                //movie description div
+              
+                // creates div for movie description
                 var divMovie = document.createElement('div');
                 var m = movies[i];
                 var actors = arrayToString(m.actors);
                 var directors = arrayToString(m.directors);
                 var genre = arrayToString(m.genre);
+
+                // creates an array of words within the movie title
                 var parseName = m.title.split(" ");
+
+                // converts the title to the form: the-name-of-the-movie
+                // converted name will be used as the id for the movie item, and used in the link to its personal page
                 var parsedName = "";
                   for(j = 0; j < parseName.length; j++) {
                       parsedName += parseName[j].toLowerCase();
@@ -96,44 +105,50 @@
                         parsedName += "-";
                       }
                   }
-                  console.log(parsedName);
+                
+                // creates span item so that the title can be clickable
                 spanName = document.createElement('span');
                 spanName.id = parsedName;
-                spanName.style="text-decoration:underline;cursor:pointer";
+                spanName.style="cursor:pointer;color:#007bff;";
                 spanName.innerHTML = m.title;
+
+                // creates span item for the rest of the movie display text
                 spanRest = document.createElement('span');
                 spanRest.innerHTML = " (" + m.year + ") - " + m.score + "</br>" + "Actors: " + actors + "</br>Directors: " + directors + "</br>Genre: " + genre;
-                                
+
+                // adds the title and the rest of the movie information to the parent element           
                 divMovie.appendChild(spanName);
                 divMovie.appendChild(spanRest);
                 
-                //span surrounding movie description
+                // span including movie description display
                 var span = document.createElement('span');
                 span.id = "movie-info";
                 span.style = "float:left";
                 span.appendChild(divMovie);
 
-                //image of movie poster
+                
+                // creates image element of movie poster
                 var img = document.createElement('img');
+                
+                // uses default movie image
                 img.src = "images/movie-placeholder.png";
                 img.id = "movie-result";
                 img.alt = "image showing movie poster";
                 img.class="img-responsive";
                 img.style="float:left";
 
-                //link object for button 
+                // link html object for adding movies to My Movies
                 var a = document.createElement('a');
-                a.class = "btn btn-success";
                 a.href = "my-movies.html";
                 a.style = "float:right; margin-right:5%";
                 
-                //button object for adding movies to My Movies
+                // appends image to link object                
                 var btn = document.createElement('img');
                 btn.src = "images/add-to-my-movies-button.png";
                 btn.style="height:60%; width:60%; border-radius:10px;float:right;margin-right:10%";
                 a.appendChild(btn);
                 
-                //movie container - div
+                // creates movie item container for housing the movie image, movie description, and add-movie button
                 var divMovieItem = document.createElement('div');
                 divMovieItem.class="movie-item";
                 divMovieItem.style="display:block; clear:both; padding-top: 2%; padding-left: 5%;";
@@ -141,8 +156,11 @@
                 divMovieItem.appendChild(img);
                 divMovieItem.appendChild(span);
                 divMovieItem.appendChild(a);
+
+                // appends movie item to the parent element
                 container.appendChild(divMovieItem);
-                console.log(parsedName + '.html');
+
+                // creates an event listener for navigating to personal movie page when clicking on the title
                 document.getElementById(parsedName).addEventListener("click", (function(){
                     window.location.href = "movies/" + this.id + '.html';
                 }), false); 
@@ -150,6 +168,9 @@
 
 
             }
+
+            // input: string array
+            // output: string with array elements separated with commas and spaces
             function arrayToString(array){
               var str = "";
               var i;
@@ -164,6 +185,7 @@
               return str;
             }
             
+            // list of example movies to be displayed dynamically
             var movies=[
             {
               title: "The Patriot",

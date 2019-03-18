@@ -40,10 +40,6 @@
         </nav>
     
     <form name="loginform" class="form-container-login" ></form>
-    <!--<div class="imgcontainer">
-        <img src="images/login-profile.png" alt="login profile image" class="login-profile">
-    </div>
-    -->
 
     <div class="login-container">
         <div class="row justify-content-center">
@@ -69,22 +65,31 @@
         </div>
         <div class="row justify-content-center" >
             <div class="col-md-4">
+
+                <!-- uses anonymous function-->
                 <input type="button" class="login-button" onclick="(function(){
                     var psw = document.getElementById('psw-input').value;
                     var username = document.getElementById('username-input').value;
+
+                    // if password and username not entered, display appropriate error
                     if (psw === '' && username === ''){
                         document.getElementById('login-note').innerHTML = 'Please enter a username and password.';
                         return;
                     }
+                    
+                    // if only password isn't entered, display appropriate error
                     if (psw === ''){
                         document.getElementById('login-note').innerHTML = 'Please enter a password.';
                         return;
                     }
+
+                    // if only username isn't entered, display appropriate error
                     if (username === ''){
                         document.getElementById('login-note').innerHTML = 'Please enter a username.';
                         return;
                     }
                     
+                    // navigate to profile page if appropriate login information is entered
                     location.href='profile.html';
                     })();" value='Login'> <!--location.href='loggedin_home.html'-->
             </div>
@@ -106,10 +111,6 @@
         </div>
     </div>
     </form>
-    <script>
-
-    //var movie = document.getElementById("movie-title-input").value;
-    </script>
-          
+    
     </body>
 </html>

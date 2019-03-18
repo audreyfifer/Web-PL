@@ -57,6 +57,7 @@
                         <img src = "images/movie-placeholder.png" id="movie-result" alt="image showing logo" class="img-responsive" style="float:left">
                         <span id="movie-info" style="float:left">
                           <div >
+                            <!-- navigates to personal movie page when title is clicked -->
                               <a href = "movies/the-patriot.html">The Patriot</a> <a>(2000)</a>    -    <a>72%</a></br>
                               <a>Starring: Mel Gibson, Heath Ledger, Joely Richardson, Jason Isaacs</a>, etc</br>
                               <a>Director: Roland Emmerich</a></br>
@@ -65,6 +66,7 @@
                     
                         </span>
                 
+                        <!-- dynamically removes element from screen -- DOM manipulation -->
                         <a class="btn btn-danger" onclick="removeMovie(this)" href="#" style="float:right;margin-right:5%;">
                                 <i class="fa fa-minus-square fa-lg"id="minus-button"></i></a>
                         
@@ -79,6 +81,7 @@
                   <img src = "images/movie-placeholder.png" id="movie-result" alt="image showing logo" class="img-responsive" style="float:left">
                   <span id="movie-info" style="float:left">
                   <div >
+                    <!-- navigates to personal movie page when title is clicked -->
                       <a href = "movies/the-godfather.html">The Godfather</a> <a>(1972)</a>    -    <a>92%</a></br>
                       <a>Starring: Marlon Brando, Al Pacino, James Caan, Robert Duvall</a>, etc</br>
                       <a>Director: Francis Ford Coppola</a></br>
@@ -86,10 +89,13 @@
   
                   </div>
                   </span>
+                  <!-- dynamically removes element from screen -- DOM manipulation -->
                   <a class="btn btn-danger" onclick="removeMovie(this)" href="#" style="float:right;margin-right:5%;">
                         <i class="fa fa-minus-square fa-lg"id="minus-button"></i></a>
-                <a class="btn btn-success" href="#" onclick="addMovie(this)" style="float:right;margin-right:2%">
-                    <i class="fa fa-plus-square fa-lg" id="plus-button"></i></a>
+                  
+                  <!-- dynamically adds element to screen -- DOM manipulation -->
+                  <a class="btn btn-success" href="#" onclick="addMovie(this)" style="float:right;margin-right:2%">
+                      <i class="fa fa-plus-square fa-lg" id="plus-button"></i></a>
                   
             </div> 
         
@@ -97,6 +103,7 @@
                   <img src = "images/movie-placeholder.png" id="movie-result" alt="image showing logo" class="img-responsive" style="float:left">
                   <span id="movie-info" style="float:left">
                   <div >
+                      <!-- navigates to personal movie page when title is clicked -->
                       <a href = "movies/mulan.html">Mulan</a> <a>(1998)</a>    -    <a>76%</a></br>
                       <a>Starring: Miguel Ferrer, Eddy Murphy, Lea Salonga</a>, etc</br>
                       <a>Director: Tony Bancroft, Barry Cook</a></br>
@@ -104,8 +111,10 @@
   
                   </div>
                   </span>
+                  <!-- dynamically removes element from screen -- DOM manipulation -->
                   <a class="btn btn-danger" onclick="removeMovie(this)" href="#" style="float:right;margin-right:5%;">
                         <i class="fa fa-minus-square fa-lg"id="minus-button"></i></a>
+                <!-- dynamically adds element to screen -- DOM manipulation -->
                 <a class="btn btn-success" href="#" onclick="addMovie(this)" style="float:right;margin-right:2%">
                     <i class="fa fa-plus-square fa-lg" id="plus-button"></i></a>
             </div> 
@@ -113,6 +122,7 @@
                   <img src = "images/movie-placeholder.png" id="movie-result" alt="image showing logo" class="img-responsive" style="float:left">
                   <span id="movie-info" style="float:left">
                   <div >
+                    <!-- navigates to personal movie page when title is clicked -->
                       <a href = "movies/edward-scissorhands.html">Edward Scissorhands</a> <a>(1990)</a>    -    <a>79%</a></br>
                       <a>Starring: Johnny Depp, Winona Ryder, Dianne Wiest, Anthony Michael Hall</a>, etc</br>
                       <a>Director: Tim Burton</a></br>
@@ -120,8 +130,10 @@
   
                   </div>
                   </span>
+                  <!-- dynamically removes element from screen -- DOM manipulation -->
                   <a class="btn btn-danger" href="#" onclick="removeMovie(this)" style="float:right;margin-right:5%;">
                         <i class="fa fa-minus-square fa-lg"id="minus-button"></i></a>
+                <!-- dynamically adds element to screen -- DOM manipulation -->
                 <a class="btn btn-success" href="#" onclick="addMovie(this)" style="float:right;margin-right:2%">
                     <i class="fa fa-plus-square fa-lg" id="plus-button"></i></a>
             </div> 
@@ -129,6 +141,7 @@
                   <img src = "images/movie-placeholder.png" id="movie-result" alt="image showing logo" class="img-responsive" style="float:left">
                   <span id="movie-info" style="float:left">
                   <div >
+                    <!-- navigates to personal movie page when title is clicked -->
                       <a href = "movies/the-breakfast-club.html">The Breakfast Club</a> <a>(1985)</a>    -    <a>79%</a></br>
                       <a>Starring: Molly Ringwald, Emilio Estevez, Anthony Michael Hall, Judd Nelson</a>, etc</br>
                       <a>Director: John Hughes</a></br>
@@ -136,8 +149,10 @@
                      
                   </div>
                   </span>
+                  <!-- dynamically removes element from screen -- DOM manipulation -->
                   <a class="btn btn-danger" href="#" onclick="removeMovie(this)" style="float:right;margin-right:5%;">
                         <i class="fa fa-minus-square fa-lg"id="minus-button"></i></a>
+                <!-- dynamically adds element to screen -- DOM manipulation -->
                 <a class="btn btn-success" href="#" onclick="addMovie(this)" style="float:right;margin-right:2%">
                     <i class="fa fa-plus-square fa-lg" id="plus-button"></i></a>
             </div> 
@@ -163,6 +178,8 @@
               </nav>
   
           <script>
+
+            // dynamically adds movie to the my movies list from the recommended movies list
               function addMovie(row){
                 var parent_id = row.parentNode.id;
                 jQuery("#"+parent_id).detach().appendTo('.my-movies-container');
@@ -170,6 +187,7 @@
                 document.getElementById(parent_id).childNodes[7].remove();
               }
               
+              // dynamically removes movie from either the my movies list or recommended movies list
               function removeMovie(row){
                 var parent_id = row.parentNode.id;
                 jQuery("#"+parent_id).remove();

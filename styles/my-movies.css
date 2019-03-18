@@ -23,3 +23,13 @@
 label{
     margin-bottom:3px;
 }
+
+.btn-success{
+    background-color:#354753;
+    border-color:#354753;
+}
+
+.btn-danger{
+    background-color:#354753;
+    border-color:#354753;
+}
