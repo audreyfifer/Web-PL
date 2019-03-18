@@ -1,4 +1,3 @@
-
 a{
     margin:0;
 }
@@ -7,17 +6,9 @@ a{
     height: 8%;
     width: 8%;
 }
+
 #logo-text{
     font-size: 7vmin;
-}
-
-
-#username{
-    color:#536f82;
-}
-
-#psw{
-    color:#536f82;
 }
 
 #profile-image{
@@ -27,57 +18,16 @@ a{
     padding:0%;
 }
 
-
-#profile-image-main-screen{
-    height: 10%;
-    width: 10%;
-    margin: 2%;
-    
-}
-#movie-result{
-    height: 8%;
-    width: 8%;
-    margin-right: 20px;
-}
-
-.btn-success{
-    background-color:#354753;
-    border-color:#354753;
-}
-.btn-danger{
-    background-color:#354753;
-    border-color:#354753;
-}
-.movie-item{
-    padding-top: 2%;
-    padding-left: 5%;
-}
 .col-md-4{
     display: block;
     margin: auto;
     text-align: center;
 }
 
-.login-profile{
-    margin-bottom: 20px;
-    margin-top: 20%;
-}
-
-.login-button{
-    margin-top: 20px;
-}
-
 .vertical-center {
     display: flex;
     align-items: center;
-  }
-
-img.login-profile {
-    width: 20%;
-    border-radius: 20%;
-    margin-left: auto;
-    margin-right: auto;
-  }
+}
 
 .search-button-class{
     display: flex;
@@ -86,7 +36,6 @@ img.login-profile {
     justify-content: center;
     align-items: center;
 }
-
 
 #search-title{
     font-size:4vmin;
@@ -112,8 +61,9 @@ label{
     margin-bottom:5px; 
 }
 
-#nav-link-text1,
-#nav-link-text2{
+#nav-link-login,
+#nav-link-signup,
+#nav-link-home{
     color:#fff;
     background-color: #354753;
     border-width: 1px;
@@ -128,10 +78,13 @@ label{
     margin-bottom:3px;
     border-radius:5px;
 }
-#nav-link-text1:hover,
-#nav-link-text2:hover,
-#nav-link-text1:focus,
-#nav-link-text2:focus{
+
+#nav-link-login:hover,
+#nav-link-signup:hover,
+#nav-link-home:hover,
+#nav-link-login:focus,
+#nav-link-signup:focus
+#nav-link-home:focus{
     background-color:#536f82;
 }
 
