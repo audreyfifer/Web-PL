@@ -9,21 +9,6 @@
     padding-left: 5%;
 }
 
-.btn-success{
-    background-color:#354753;
-    border-color:#354753;
-}
-
-.btn-danger{
-    background-color:#354753;
-    border-color:#354753;
-}
-
-.movie-item{
-    padding-top: 2%;
-    padding-left: 5%;
-}
-
 .col-md-4{
     display: block;
     margin: auto;

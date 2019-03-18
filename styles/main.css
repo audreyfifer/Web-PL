@@ -29,6 +29,16 @@ a{
     align-items: center;
 }
 
+.btn-success{
+    background-color:#354753;
+    border-color:#354753;
+}
+
+.btn-danger{
+    background-color:#354753;
+    border-color:#354753;
+}
+
 .search-button-class{
     display: flex;
     flex-direction: row;
@@ -63,7 +73,8 @@ label{
 
 #nav-link-login,
 #nav-link-signup,
-#nav-link-home{
+#nav-link-home,
+#search-button{
     color:#fff;
     background-color: #354753;
     border-width: 1px;
@@ -82,9 +93,11 @@ label{
 #nav-link-login:hover,
 #nav-link-signup:hover,
 #nav-link-home:hover,
+#search-button:hover,
 #nav-link-login:focus,
 #nav-link-signup:focus
-#nav-link-home:focus{
+#nav-link-home:focus
+#search-button:focus{
     background-color:#536f82;
 }
 
