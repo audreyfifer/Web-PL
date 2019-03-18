@@ -10,23 +10,15 @@ a{
 #logo-text{
     font-size: 7vmin;
 }
-
-
-#username{
-    color:#536f82;
-}
-
-#psw{
-    color:#536f82;
-}
-
 #profile-image{
     height: 8%;
     width: 8%;
     margin-left:80%;
     padding:0%;
 }
-
+#profile-header,h1 {
+    color:#536f82;
+}
 
 #profile-image-main-screen{
     height: 10%;
@@ -34,64 +26,17 @@ a{
     margin: 2%;
     
 }
-#movie-result{
-    height: 8%;
-    width: 8%;
-    margin-right: 20px;
-}
 
-.btn-success{
-    background-color:#354753;
-    border-color:#354753;
-}
-.btn-danger{
-    background-color:#354753;
-    border-color:#354753;
-}
-.movie-item{
-    padding-top: 2%;
-    padding-left: 5%;
-}
 .col-md-4{
     display: block;
     margin: auto;
     text-align: center;
 }
 
-.login-profile{
-    margin-bottom: 20px;
-    margin-top: 20%;
-}
-
-.login-button{
-    margin-top: 20px;
-}
-
 .vertical-center {
     display: flex;
     align-items: center;
   }
-
-img.login-profile {
-    width: 20%;
-    border-radius: 20%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-.search-button-class{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-
-
-#search-title{
-    font-size:4vmin;
-    color:#536f82;
-}
 
 .container{
     margin-left:10px;

@@ -1,12 +1,13 @@
-
 a{
     margin:0;
 }
+
 
 #logo_image{
     height: 8%;
     width: 8%;
 }
+
 #logo-text{
     font-size: 7vmin;
 }
@@ -34,24 +35,7 @@ a{
     margin: 2%;
     
 }
-#movie-result{
-    height: 8%;
-    width: 8%;
-    margin-right: 20px;
-}
 
-.btn-success{
-    background-color:#354753;
-    border-color:#354753;
-}
-.btn-danger{
-    background-color:#354753;
-    border-color:#354753;
-}
-.movie-item{
-    padding-top: 2%;
-    padding-left: 5%;
-}
 .col-md-4{
     display: block;
     margin: auto;
@@ -79,38 +63,6 @@ img.login-profile {
     margin-right: auto;
   }
 
-.search-button-class{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-
-
-#search-title{
-    font-size:4vmin;
-    color:#536f82;
-}
-
-.container{
-    margin-left:10px;
-    margin-top: 10px;
-}
-
-.form-container{
-    margin-left:30px;
-    min-height:100%;
-}
-
-label{
-    margin-bottom:3px;
-}
-
-.form-group{
-    font-size:2vmin;
-    margin-bottom:5px; 
-}
 
 #nav-link-text1,
 #nav-link-text2{
@@ -176,6 +128,7 @@ button.bg-custom-header:hover{
 .navbar-dark .navbar-nav .show>.nav-link{
     color:#fff;
 }
+
 .navbar-dark .navbar-toggler{
     color:rgba(255,255,255,.75);
     border-color:rgba(255,255,255,.35);
@@ -185,6 +138,7 @@ button.bg-custom-header:hover{
     xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' \
     stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
+
 .navbar-dark .navbar-text{
     color:rgba(255,255,255,.75);
 }
