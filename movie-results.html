@@ -85,6 +85,9 @@
                 //movie description div
                 var divMovie = document.createElement('div');
                 var m = movies[i];
+                var actors = arrayToString(m.actors);
+                var directors = arrayToString(m.directors);
+                var genre = arrayToString(m.genre);
                 var parseName = m.title.split(" ");
                 var parsedName = "";
                   for(j = 0; j < parseName.length; j++) {
@@ -99,7 +102,7 @@
                 spanName.style="text-decoration:underline";
                 spanName.innerHTML = m.title;
                 spanRest = document.createElement('span');
-                spanRest.innerHTML = " (" + m.year + ") - " + m.score + "</br>" + "Actors: " + m.actors + "</br>Directors: " + m.directors + "</br>Genre: " + m.genre;
+                spanRest.innerHTML = " (" + m.year + ") - " + m.score + "</br>" + "Actors: " + actors + "</br>Directors: " + directors + "</br>Genre: " + genre;
                                 
                 divMovie.appendChild(spanName);
                 divMovie.appendChild(spanRest);
@@ -147,7 +150,19 @@
 
 
             }
-            
+            function arrayToString(array){
+              var str = "";
+              var i;
+              for (i = 0; i < array.length; i++){
+                if (i==array.length-1){
+                  str += array[i];
+                }
+                else {
+                  str += array[i] + ", ";
+                }
+              }
+              return str;
+            }
             
             var movies=[
             {
