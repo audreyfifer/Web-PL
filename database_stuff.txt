@@ -1,0 +1,3 @@
+username | password
+title | genre | release-date-year | rating | duration | actors | directors | synopsis | percentage | image-link
+name | username | password | my-movies | recommended-movies | friends
