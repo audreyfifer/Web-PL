@@ -124,7 +124,7 @@
                   <div >
                     <!-- navigates to personal movie page when title is clicked -->
                       <a href = "movies/edward-scissorhands.html">Edward Scissorhands</a> <a>(1990)</a>    -    <a>79%</a></br>
-                      <a>Starring: Johnny Depp, Winona Ryder, Dianne Wiest, Anthony Michael Hall</a>, etc</br>
+                      <a>Starring: Johnny Depp, Winona Ryder, Dianne Wiest</a>, etc</br>
                       <a>Director: Tim Burton</a></br>
                       <a>Drama, Fantasy, Romance</a></br>
   
@@ -143,7 +143,7 @@
                   <div >
                     <!-- navigates to personal movie page when title is clicked -->
                       <a href = "movies/the-breakfast-club.html">The Breakfast Club</a> <a>(1985)</a>    -    <a>79%</a></br>
-                      <a>Starring: Molly Ringwald, Emilio Estevez, Anthony Michael Hall, Judd Nelson</a>, etc</br>
+                      <a>Starring: Molly Ringwald, Emilio Estevez, Anthony Michael Hall</a>, etc</br>
                       <a>Director: John Hughes</a></br>
                       <a>Comedy, Drama</a></br>
                      
@@ -184,7 +184,7 @@
                 var parent_id = row.parentNode.id;
                 jQuery("#"+parent_id).detach().appendTo('.my-movies-container');
                 //row.hidden=true;
-                document.getElementById(parent_id).childNodes[7].remove();
+                document.getElementById(parent_id).childNodes[11].remove();
               }
               
               // dynamically removes movie from either the my movies list or recommended movies list
