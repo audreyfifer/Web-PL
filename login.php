@@ -64,13 +64,24 @@ Bittania Teshome (bt9nd)
                 {
                     // setcookie(name, value, expiery-time)
                     // setcookie() function stores the submitted fields' name/value pair
-                    setcookie('user', $user, time()+3600);
-                    setcookie('psw', md5($psw), time()+3600);  // create a hash conversion of password values using md5() function
-
+                    //setcookie('user', $user, time()+3600);
+                    // setcookie('psw', md5($psw), time()+3600);  // create a hash conversion of password values using md5() function
+                    $_SESSION['user'] = $user;
+                    $_SESSION['psw'] = $psw;
                     // redirect the browser to another page using the header() function to specify the target URL
                     header('Location: profile.php');
                 }
             }
+            if($_POST['remember']) {
+                setcookie('remember_me', $_POST['username'], time() + 3600);
+            }
+            elseif(!$_POST['remember']) {
+                if(isset($_COOKIE['remember_me'])) {
+                    $past = time() - 100;
+                    setcookie(remember_me, gone, $past);
+                }
+            }
+
         }
         ?>
 
@@ -115,7 +126,15 @@ Bittania Teshome (bt9nd)
                 </div>
                 <div class="row justify-content-center" >
                     <div class="col-md-4">
-                        <input type="submit" value="Sign in" class="btn btn-light"  />  
+                        <input type="submit" value="Login" class="btn btn-light"  />
+                        
+                       <input type="checkbox" name="remember" <?php if(isset($_COOKIE['remember_me'])) {
+    echo 'checked="checked"';
+}
+              else {
+                  echo '';
+              }
+                               ?> >Remember Me
 
                         <!-- uses anonymous function-->
                         <!--
