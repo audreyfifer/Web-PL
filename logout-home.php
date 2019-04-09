@@ -26,6 +26,7 @@ Bittania Teshome (bt9nd)
 
     <body>
 
+        <?php session_start(); ?>
 
 
 
@@ -126,6 +127,7 @@ Bittania Teshome (bt9nd)
 
 
         <script type="text/javascript">
+            alert("You've successfully logged out");
 
             /* - verifies that:
                 1. at least one item is entered to search
@@ -174,8 +176,26 @@ Bittania Teshome (bt9nd)
                 window.location.href = 'movie-results.php';
             }
 
-
         </script>
+        
+        
+<?php
+// Set session variables can be removed by specifying their element name to unset() function.
+// A session can be completely terminated by calling the session_destroy() function.
+
+// Check if any session variables are set and retrieve all stored names and values
+if (count($_SESSION) > 0)
+{   
+   foreach ($_SESSION as $key => $value)
+   {
+      // Deletes the variable (array element) where the value is stored in this PHP.
+      // However, the session object still remains on the server.    	
+      unset($_SESSION[$key]);
+   }      
+   session_destroy();     // complete terminate the session
+}
+?>
+
 
     </body>
 </html>

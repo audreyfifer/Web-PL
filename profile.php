@@ -35,7 +35,7 @@
               <span id="logo-text">MovieFinder</span>
               </a>
             <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
-                <a class="nav-link" id="nav-link-home" href="home.html">Home</a>
+                <a class="nav-link" id="nav-link-home" href="home.php">Home</a>
             </div>  
         </nav>
     
@@ -52,6 +52,7 @@
                     <a href="#" id="friends-link">Friends</a></br>
                     <a href="#" id="history-link">History</a></br>
                     <a href="#" id="settings-link">Settings</a></br>
+                    <a href="logout-home.php" id="settings-link">Logout</a></br>
                 </div> 
             </span> 
         </div>
