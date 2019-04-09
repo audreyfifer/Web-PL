@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" /> 
         <link rel="stylesheet" href="bootstrap-4.0.0/css/bootstrap.min.css" /> <!--if you downloaded bootstrap to your computer -->
         <link rel="stylesheet" href="styles/main.css">
-        <link rel="stylesheet" href="styles/login.css">
+        <link rel="stylesheet" href="styles/register.css">
   
   <title>Register</title>    
 </head>
@@ -28,22 +28,49 @@
             </div>  
         </nav>
   <div class="container">
-    <h1>Register</h1>
-    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
-   <!--   <input type="submit" name="btnaction" value="create" class="btn btn-light" /> -->
-      
-     <!-- <input type="submit" name="btnaction" value="select" class="btn btn-light" />
-      <input type="submit" name="btnaction" value="update" class="btn btn-light" />
-      <input type="submit" name="btnaction" value="delete" class="btn btn-light" />
-      <input type="submit" name="btnaction" value="drop" class="btn btn-light" />    -->  
-        
+            <h1 id="register-title">Register</h1>   
+            <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get" name="registerform" class="form-container" >
+                <div class="register-form-group">
+                     <label for="firstname" id="firstname" >First Name</label>
+                    <input type="text" id="firstname-input" class="form-control input-sm" placeholder="Enter First Name" name="firstname" >      
+                </div>
+                <div class="register-form-group">
+                    <label for="lastname" id="lastname" >Last Name</label>
+                    <input type="text" id="lastname-input" class="form-control input-sm" placeholder="Enter Last Name" name="lastname" >
+                </div>
+                <div class="register-form-group">
+                    <label for="username" id="username" >Username</label>
+                    <input type="text" id="username-input" class="form-control input-sm" placeholder="Enter Username" name="username" required>
+                </div>
+                <div class="register-form-group">
+                    <label for="psw" id="psw">Password</label>
+                    <input type="password" id="psw-input" class="form-control input-sm" placeholder="Enter Password" name="psw" required>
+                </div>
+                <div class="register-form-group">
+                    <label for="psw-confirm" id="psw-confirm">Confirm Password</label>
+                    <input type="password" id="psw-confirm-input" class="form-control input-sm" placeholder="Confirm Password" name="psw-confirm" required>
+                </div>
+                <div class="register-form-group" >
+                    <input type="submit" name="btnaction" value="Register" class="btn btn-light" />   
+                </div>
+            </form>
+        </div>
+        <!--
          <div class="login-container">
-                <div class="row justify-content-center">
-                    <!--
+                <div class="row justify-content-center" >
+
                     <div class="col-md-4">
-                        <img src="images/login-profile.png" alt="login profile image" class="login-profile">
-                    </div>
-                    -->
+                        <label for="firstname" id="firstname" ><b>First Name</b></label>
+                        <input type="text" id="firstname-input" placeholder="Enter First Name" name="firstname" >
+                    </div> 
+
+                </div>
+                <div class="row justify-content-center" >
+
+                    <div class="col-md-4">
+                        <label for="lastname" id="lastname" ><b>Last Name</b></label>
+                        <input type="text" id="lastname-input" placeholder="Enter Last Name" name="lastname" >
+                    </div> 
 
                 </div>
                 <div class="row justify-content-center" >
@@ -67,6 +94,7 @@
                     </div>
              </div>
     </form>
+-->
 
 <?php 
 if (isset($_GET['btnaction']))
@@ -76,7 +104,7 @@ if (isset($_GET['btnaction']))
       switch ($_GET['btnaction']) 
       {
       //   case 'create': createTable(); break;
-         case 'register': insertData();  break;
+         case 'Register': insertData();  break;
       //   case 'select': selectData();  break;
     //     case 'update': updateData();  break;
       //   case 'delete': deleteData();  break;
@@ -125,10 +153,13 @@ function selectData()
 function createTable()
 {
  
-    require('connect-db1.php');
+    require('connect-db.php');
     
-    $query = "CREATE TABLE courses (courseID VARCHAR(8) PRIMARY KEY, course_desc VARCHAR(20) NOT NULL)";
-    $query = "CREATE TABLE clients (courseID VARCHAR(8) PRIMARY KEY, course_desc VARCHAR(20) NOT NULL)";
+    $query = "CREATE TABLE user_info (
+        FirstName VARCHAR(30) NOT NULL,
+        LastName VARCHAR(30) NOT NULL,
+        Username VARCHAR(30) PRIMARY KEY, 
+        Pw VARCHAR(30) NOT NULL)";
     
     $statement = $db->prepare($query);
     $statement->execute();
@@ -152,9 +183,9 @@ function createTable()
 function dropTable()
 {
   
-	require('connect-db1.php');
+	require('connect-db.php');
     
-    $query = "DROP TABLE courses";
+    $query = "DROP TABLE user_info";
     
     $statement = $db->prepare($query);
     $statement->execute();
@@ -175,26 +206,26 @@ function dropTable()
 function insertData()
 {
    
-	
-	require('connect-db1.php');
+	require('connect-db.php');
     
-    $course_id = "hi";
-    $course_desc = "bye";
-    //$firstname = "joe";
-   // $lastname = "bob";
-   // $username = "joe123";
-    //$password = "yolo";
+    $result = $db->query("SHOW TABLES LIKE 'user_info'");
+    $tableExists = ($result !== false) && ($result->rowCount() > 0);
+	if(!$tableExists){
+        createTable();
+    }
+    $firstname = "joe";
+    $lastname = "bob";
+    $username = "joe123";
+    $pwd = "yolo";
     
-    $query = "INSERT INTO clients (courseID, course_desc) VALUES (:course_id, :course_desc)";
-   // $query = "INSERT INTO clients (FirstName, LastName) VALUES (:firstname, :lastname)";
-   // $query = "INSERT INTO users (FirstName, LastName, Username, Password) VALUES (:firstname, :lastname, :username, :password)";
+    $query = "INSERT INTO user_info (FirstName, LastName, Username, Pw) 
+                VALUES (:firstname, :lastname, :username, :pwd)";
+   
     $statement = $db->prepare($query);
-    $statement->bindValue(':course_id', $course_id);
-    $statement->bindValue(':course_desc', $course_desc);
-    //$statement->bindValue(':firstname', $firstname);
-    //$statement->bindValue(':lastname', $lastname);
-    //$statement->bindValue(':username', $username);
-    //$statement->bindValue(':password', $password);
+    $statement->bindValue(':firstname', $firstname);
+    $statement->bindValue(':lastname', $lastname);
+    $statement->bindValue(':username', $username);
+    $statement->bindValue(':pwd', $pwd);
     $statement->execute();
     $statement->closeCursor();
 	
