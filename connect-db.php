@@ -21,14 +21,14 @@ $hostname = 'localhost:3306';
 $dbname = 'moviefinder';
 
 // database credentials
-$username = 'MovieFinder';
+$username = 'aef3ha';
 $password = 'password';
 
 // DSN (Data Source Name) specifies the host computer for the MySQL database 
 // and the name of the database. If the MySQL database is running on the same server
 // as PHP, use the localhost keyword to specify the host computer
 
-$dsn = "mysql:host=$hostname;dbname=moviefinder";
+$dsn = "mysql:host=$hostname;dbname=$dbname";
 
 // To connect to a MySQL database named web4640, need three arguments: 
 // - specify a DSN, username, and password
