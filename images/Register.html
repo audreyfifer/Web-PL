@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!-- saved from url=(0106)http://localhost/Web-PL/register.php?firstname=p&lastname=p&uname=p&psw=p&psw-confirm=p&btnaction=Register -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- required to handle IE -->
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="./Register_files/bootstrap.min.css"> 
+        <link rel="stylesheet" href="./Register_files/bootstrap.min(1).css"> <!--if you downloaded bootstrap to your computer -->
+        <link rel="stylesheet" href="./Register_files/main.css">
+        <link rel="stylesheet" href="./Register_files/register.css">
+  
+  <title>Register</title>    
+</head>
+<body>
+  <script src="./Register_files/jquery.min.js.download"></script>
+        <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>-->
+        <script src="./Register_files/bootstrap.min.js.download"></script>
+        <nav class="navbar navbar-expand-md bg-custom-header navbar-dark">
+            <a class="navbar-brand" href="http://localhost/Web-PL/home.html">
+                <img src="./Register_files/faces.png" id="logo_image" alt="image showing logo" class="img-responsive"><!--</br>-->
+                <span id="logo-text">MovieFinder</span>
+            </a>
+            <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
+                <a class="nav-link" id="nav-link-home" href="http://localhost/Web-PL/home.html">Home</a>
+            </div>  
+        </nav>
+  <div class="container">
+            <h1 id="register-title">Register</h1>   
+            <form action="http://localhost/Web-PL/register.php?firstname=p&amp;lastname=p&amp;uname=p&amp;psw=p&amp;psw-confirm=p&amp;btnaction=Register" method="get" name="registerform" class="form-container">
+                <div class="register-form-group">
+                     <label for="firstname" id="firstname">First Name</label>
+                    <input type="text" id="firstname-input" class="form-control input-sm" placeholder="Enter First Name" name="firstname">      
+                </div>
+                <div class="register-form-group">
+                    <label for="lastname" id="lastname">Last Name</label>
+                    <input type="text" id="lastname-input" class="form-control input-sm" placeholder="Enter Last Name" name="lastname">
+                </div>
+                <div class="register-form-group">
+                    <label for="username" id="username">Username</label>
+                    <input type="text" id="username-input" class="form-control input-sm" placeholder="Enter Username" name="uname" required="">
+                </div>
+                <div class="register-form-group">
+                    <label for="psw" id="psw">Password</label>
+                    <input type="password" id="psw-input" class="form-control input-sm" placeholder="Enter Password" name="psw" required="">
+                </div>
+                <div class="register-form-group">
+                    <label for="psw-confirm" id="psw-confirm">Confirm Password</label>
+                    <input type="password" id="psw-confirm-input" class="form-control input-sm" placeholder="Confirm Password" name="psw-confirm" required="">
+                </div>
+                <div class="register-form-group">
+                    <input type="submit" name="btnaction" value="Register" class="btn btn-light">   
+                </div>
+            </form>
+        </div>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

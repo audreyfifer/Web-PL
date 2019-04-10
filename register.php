@@ -29,7 +29,7 @@
         </nav>
   <div class="container">
             <h1 id="register-title">Register</h1>   
-            <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get" name="registerform" class="form-container" >
+            <form action="<?php $_SERVER['PHP_SELF'] ?>" method="GET" name="registerform" class="form-container" >
                 <div class="register-form-group">
                      <label for="firstname" id="firstname" >First Name</label>
                     <input type="text" id="firstname-input" class="form-control input-sm" placeholder="Enter First Name" name="firstname" >      
@@ -55,47 +55,7 @@
                 </div>
             </form>
         </div>
-        <!--
-         <div class="login-container">
-                <div class="row justify-content-center" >
-
-                    <div class="col-md-4">
-                        <label for="firstname" id="firstname" ><b>First Name</b></label>
-                        <input type="text" id="firstname-input" placeholder="Enter First Name" name="firstname" >
-                    </div> 
-
-                </div>
-                <div class="row justify-content-center" >
-
-                    <div class="col-md-4">
-                        <label for="lastname" id="lastname" ><b>Last Name</b></label>
-                        <input type="text" id="lastname-input" placeholder="Enter Last Name" name="lastname" >
-                    </div> 
-
-                </div>
-                <div class="row justify-content-center" >
-
-                    <div class="col-md-4">
-                        <label for="username" id="username" ><b>Username</b></label>
-                        <input type="text" id="username-input" placeholder="Enter Username" name="username" required>
-                    </div> 
-
-                </div>
-                <div class="row justify-content-center" style="margin-top:1%;">
-                    <div class="col-md-4">
-                        <label for="psw" id="psw"><b>&nbspPassword</b></label>
-                        <input type="password" id="psw-input" placeholder="Enter Password" name="psw" required>
-                    </div>
-
-                </div>
-                <div class="row justify-content-center" >
-                    <div class="col-md-4">
-                    <input type="submit" name="btnaction" value="register" class="btn btn-light" />   
-                    </div>
-             </div>
-    </form>
--->
-
+        
 <?php 
 if (isset($_GET['btnaction']))
 {	
@@ -205,7 +165,8 @@ function dropTable()
 /** insert data **/
 function insertData()
 {
-   
+    
+    
 	require('connect-db.php');
     
     $result = $db->query("SHOW TABLES LIKE 'user_info'");
@@ -213,10 +174,27 @@ function insertData()
 	if(!$tableExists){
         createTable();
     }
-    $firstname = "joe";
-    $lastname = "bob";
-    $username = "joe123";
+    
+    $firstname = "";
+    $lastname = "";
+    $username = "hello123";
     $pwd = "yolo";
+    $confirm_pwd = "yolo";
+
+    if ($_SERVER['REQUEST_METHOD'] == "GET")
+    {
+        if($_GET['firstname']){
+            $firstname= $_GET['firstname'];
+        }
+        if($_GET['lastname']){
+            $lastname = $_GET['lastname'];
+        }
+     	
+     	$username = $_GET['username'] ;
+        $pwd = $_GET['psw'];
+        $pwd_confirm = 	$_GET['psw-confirm'];
+         
+     }
     
     $query = "INSERT INTO user_info (FirstName, LastName, Username, Pw) 
                 VALUES (:firstname, :lastname, :username, :pwd)";
