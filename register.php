@@ -29,7 +29,7 @@
         </nav>
   <div class="container">
             <h1 id="register-title">Register</h1>   
-            <form action="<?php $_SERVER['PHP_SELF'] ?>" method="GET" name="registerform" class="form-container" >
+            <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST" name="registerform" class="form-container" >
                 <div class="register-form-group">
                      <label for="firstname" id="firstname" >First Name</label>
                     <input type="text" id="firstname-input" class="form-control input-sm" placeholder="Enter First Name" name="firstname" >      
@@ -38,10 +38,12 @@
                     <label for="lastname" id="lastname" >Last Name</label>
                     <input type="text" id="lastname-input" class="form-control input-sm" placeholder="Enter Last Name" name="lastname" >
                 </div>
-                <div class="register-form-group">
+                <div class="register-form-group" >
                     <label for="username" id="username" >Username</label>
                     <input type="text" id="username-input" class="form-control input-sm" placeholder="Enter Username" name="username" required>
                 </div>
+                
+
                 <div class="register-form-group">
                     <label for="psw" id="psw">Password</label>
                     <input type="password" id="psw-input" class="form-control input-sm" placeholder="Enter Password" name="psw" required>
@@ -57,11 +59,11 @@
         </div>
         
 <?php 
-if (isset($_GET['btnaction']))
+if (isset($_POST['btnaction']))
 {	
    try 
    { 	
-      switch ($_GET['btnaction']) 
+      switch ($_POST['btnaction']) 
       {
       //   case 'create': createTable(); break;
          case 'Register': insertData();  break;
@@ -180,34 +182,46 @@ function insertData()
     $username = "hello123";
     $pwd = "yolo";
     $confirm_pwd = "yolo";
-
-    if ($_SERVER['REQUEST_METHOD'] == "GET")
+    $user_in_db = true;
+    
+    if ($_SERVER['REQUEST_METHOD'] == "POST")
     {
-        if($_GET['firstname']){
-            $firstname= $_GET['firstname'];
+        if($_POST['firstname']){
+            $firstname= $_POST['firstname'];
         }
-        if($_GET['lastname']){
-            $lastname = $_GET['lastname'];
+        if($_POST['lastname']){
+            $lastname = $_POST['lastname'];
         }
      	
-     	$username = $_GET['username'] ;
-        $pwd = $_GET['psw'];
-        $pwd_confirm = 	$_GET['psw-confirm'];
-         
+        $username = $_POST['username'] ;
+        $pwd = $_POST['psw'];
+        $pwd_confirm = 	$_POST['psw-confirm'];
+        
+        $db_grab = $db->query("select Username from user_info where Username=$username");
+        $user_in_db =  ($db_grab !== false) && ($db_grab->rowCount() > 0);  
+/*
+        if ($pwd!=$pwd_confirm && !empty($_POST['username'] )){
+            echo "<script type='text/javascript'>alert('passwords must be the same');</script>";
+        }
+        if ($user_in_db && !empty($_POST['username'] )){
+            echo "<script type='text/javascript'>alert('username already exists. pick another');</script>";
+        }  
+        */  
      }
     
-    $query = "INSERT INTO user_info (FirstName, LastName, Username, Pw) 
-                VALUES (:firstname, :lastname, :username, :pwd)";
-   
-    $statement = $db->prepare($query);
-    $statement->bindValue(':firstname', $firstname);
-    $statement->bindValue(':lastname', $lastname);
-    $statement->bindValue(':username', $username);
-    $statement->bindValue(':pwd', $pwd);
-    $statement->execute();
-    $statement->closeCursor();
-	
-	
+     if($pwd==$pwd_confirm && !$user_in_db){
+        $query = "INSERT INTO user_info (FirstName, LastName, Username, Pw) 
+                    VALUES (:firstname, :lastname, :username, :pwd)";
+    
+        $statement = $db->prepare($query);
+        $statement->bindValue(':firstname', $firstname);
+        $statement->bindValue(':lastname', $lastname);
+        $statement->bindValue(':username', $username);
+        $statement->bindValue(':pwd', $pwd);
+        $statement->execute();
+        $statement->closeCursor();
+        header("Location: profile.php");
+     }
 	
 	
 	

@@ -72,18 +72,20 @@ Bittania Teshome (bt9nd)
                     header('Location: profile.php');
                 }
             }
-            if($_POST['remember']) {
-                setcookie('remember_me', $_POST['username'], time() + 3600);
+            if(!empty($_POST["remember"])) {
+                setcookie ("username",$_POST["username"],time()+ 3600);
+                setcookie ("psw",$_POST["psw"],time()+ 3600);
+                //echo "Cookies Set Successfuly";
+            } else {
+                setcookie("username","");
+                setcookie("psw","");
+                //echo "Cookies Not Set";
             }
-            elseif(!$_POST['remember']) {
-                if(isset($_COOKIE['remember_me'])) {
-                    $past = time() - 100;
-                    setcookie(remember_me, gone, $past);
-                }
-            }
-
         }
-        ?>
+            ?>
+            
+
+    
 
 
 
@@ -113,28 +115,22 @@ Bittania Teshome (bt9nd)
 
                     <div class="col-md-4">
                         <label for="username" id="username" ><b>Username</b></label>
-                        <input type="text" id="username-input" placeholder="Enter Username" name="username" required>
+                        <input type="text" id="username-input" placeholder="Enter Username" name="username" value="<?php if(isset($_COOKIE['username'])) {echo $_COOKIE["username"];}?>" required>
                     </div> 
 
                 </div>
                 <div class="row justify-content-center" style="margin-top:1%;">
                     <div class="col-md-4">
                         <label for="psw" id="psw"><b>&nbspPassword</b></label>
-                        <input type="password" id="psw-input" placeholder="Enter Password" name="psw" required>
+                        <input type="password" id="psw-input" placeholder="Enter Password" name="psw" value="<?php if(isset($_COOKIE['psw'])) {echo $_COOKIE["psw"];}?>" required>
                     </div>
 
                 </div>
                 <div class="row justify-content-center" >
                     <div class="col-md-4">
-                        <input type="submit" value="Login" class="btn btn-light"  />
+                        <input type="submit" value="Login" name="login" class="btn btn-light"  >
                         
-                       <input type="checkbox" name="remember" <?php if(isset($_COOKIE['remember_me'])) {
-    echo 'checked="checked"';
-}
-              else {
-                  echo '';
-              }
-                               ?> >Remember Me
+                       <input type="checkbox" name="remember" id="remember" >Remember Me
 
                         <!-- uses anonymous function-->
                         <!--
