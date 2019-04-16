@@ -87,9 +87,7 @@
                     //header('Location: login.php');
                         
                     ?>
-                    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
-                    <input type="submit" name="btnaction" value="delete" class="btn btn-light" />
-                    </form>
+                    
 <?php 
 if (isset($_GET['btnaction']))
 {	
@@ -101,7 +99,8 @@ if (isset($_GET['btnaction']))
          //case 'insert': insertData();  break;
          //case 'select': selectData();  break;
          //case 'update': updateData();  break;
-         case 'delete': deleteData();  break;
+         case 'Delete Account': deleteData();  break;
+         case 'Edit Name': editData(); break;
          //case 'drop':   dropTable();   break;      
       }
    }
@@ -112,7 +111,13 @@ if (isset($_GET['btnaction']))
    }   
 }
 ?>
-                    <?php
+<?php
+function editData()
+{
+    header('Location: edit-account-info.php');
+}
+?>
+<?php
 /*************************/
 /** delete data **/
 function deleteData()
@@ -133,5 +138,9 @@ function deleteData()
     }
 }
 ?>
+        <form action="<?php $_SERVER['PHP_SELF'] ?>" style="margin-left:14%" method="get">
+            <input type="submit" name="btnaction" value="Edit Name" class = "btn btn-light"/>
+            <input type="submit" name="btnaction" value="Delete Account" class="btn btn-light" />
+        </form>
     </body>
     </html>

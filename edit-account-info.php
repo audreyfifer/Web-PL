@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="styles/main.css">
         <link rel="stylesheet" href="styles/register.css">
   
-  <title>Register</title>    
+  <title>Edit Account</title>    
 </head>
 <body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -37,15 +37,9 @@
                 <div class="register-form-group">
                     <label for="lastname" id="lastname" >Last Name</label>
                     <input type="text" id="lastname-input" class="form-control input-sm" placeholder="Enter Last Name" name="lastname" >
-                </div>
-                <div class="register-form-group" >
-                    <label for="username" id="username" >Username</label>
-                    <input type="text" id="username-input" class="form-control input-sm" placeholder="Enter Username" name="username" required>
-                </div>
-                
-
+                </div>                
                 <div class="register-form-group">
-                    <label for="psw" id="psw">Password</label>
+                    <label for="psw" id="psw">New Password</label>
                     <input type="password" id="psw-input" class="form-control input-sm" placeholder="Enter Password" name="psw" required>
                 </div>
                 <div class="register-form-group">
@@ -53,7 +47,7 @@
                     <input type="password" id="psw-confirm-input" class="form-control input-sm" placeholder="Confirm Password" name="psw-confirm" required>
                 </div>
                 <div class="register-form-group" >
-                    <input type="submit" name="btnaction" value="Register" class="btn btn-light" />   
+                    <input type="submit" name="btnaction" value="Update Info" class="btn btn-light" />   
                 </div>
             </form>
         </div>
@@ -68,7 +62,7 @@ if (isset($_POST['btnaction']))
       switch ($_POST['btnaction']) 
       {
       //   case 'create': createTable(); break;
-         case 'Register': insertData();  break;
+         case 'Update Info': editData();  break;
       //   case 'select': selectData();  break;
     //     case 'update': updateData();  break;
       //   case 'delete': deleteData();  break;
@@ -83,86 +77,6 @@ if (isset($_POST['btnaction']))
 }
 ?>
 
-
-
-<?php
-// require('connect-db.php');
-
-// require: if a required file is not found, reqire() produces a fatal error, the rest of the script won't run
-// include: if a required file is not found, include() thorws a warning, the rest of the script will run
-?>
-
-
-<?php  
-/*************************/
-/** get data **/
-function selectData()
-{
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-}
-?>
-
-<?php 
-/*************************/
-/** create table **/
-function createTable()
-{
- 
-    require('connect-db.php');
-    
-    $query = "CREATE TABLE user_info (
-        FirstName VARCHAR(30) NOT NULL,
-        LastName VARCHAR(30) NOT NULL,
-        Username VARCHAR(30) PRIMARY KEY, 
-        Pw VARCHAR(30) NOT NULL)";
-    
-    $statement = $db->prepare($query);
-    $statement->execute();
-    $statement->closeCursor();
-	
-	
-	
-	
-	
-	
-	
-	
-	
-}
-?>
-
-
-<?php 
-/*************************/
-/** drop table **/
-function dropTable()
-{
-  
-	require('connect-db.php');
-    
-    $query = "DROP TABLE user_info";
-    
-    $statement = $db->prepare($query);
-    $statement->execute();
-    $statement->closeCursor();
-	
-	
-	
-	
-	
-	
-	
-}
-?>
 
 <?php 
 /*************************/
@@ -183,7 +97,7 @@ function insertData()
     $lastname = "";
     $username = "hello123";
     $pwd = "yolo";
-    $confirm_pwd = "yolo";
+    $pwd_confirm = "yolo";
     $user_in_db = true;
     
     if ($_SERVER['REQUEST_METHOD'] == "POST")
@@ -233,10 +147,58 @@ function insertData()
 
 
 <?php
-/*************************/
-/** update data **/
-function updateData()
+function editData()
 {
+    
+  require('connect-db.php');
+  if (isset($_SESSION['user'])) {
+    $user = $_SESSION['user'];
+    $con=mysqli_connect("localhost","cs4640","password","moviefinder");
+    
+    if (mysqli_connect_errno()){
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    }
+    $sql = "Select * from user_info where Username='$user';";
+    
+    $result=$con->query($sql);
+    $row = $result->fetch_assoc();
+    $first = $row['FirstName'];
+    $last = $row['LastName'];
+    $pw = $row['Pw'];
+    $pw_confirm = $row['Pw'];
+
+    if ($_SERVER['REQUEST_METHOD'] == "POST")
+    {
+        if($_POST['firstname']){
+            $first= $_POST['firstname'];
+        }
+        if($_POST['lastname']){
+            $last = $_POST['lastname'];
+        }
+        if($_POST['psw']){
+            $pw = $_POST['psw'];
+        }
+        if($_POST['psw-confirm']){
+            $pw_confirm = $_POST['psw-confirm'];
+        }
+         
+        if($pwd==$pwd_confirm){
+            $query = "UPDATE user_info 
+            SET FirstName='$first', LastName='$last', Pw='$pw' 
+            WHERE Username='$user'";
+        
+            $statement = $db->prepare($query);
+            $statement->bindValue(':first', $first);
+            $statement->bindValue(':last', $last);
+            $statement->bindValue(':pw', $pw);
+            $statement->execute();
+            $statement->closeCursor();
+            header("Location: account-info.php");
+         }
+        }
+    mysqli_close($con);
+
+  }
   
 	
 	
@@ -249,26 +211,5 @@ function updateData()
 	
 }
 ?>
-
-<?php
-/*************************/
-/** delete data **/
-function deleteData()
-{
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-}
-?>
-
-
-
 </body>
 </html>
