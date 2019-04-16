@@ -47,8 +47,8 @@
             
                 <div style="margin-left:20%; margin-top:20%">
                   <!-- currently only My Movies link navigates to an actual page -->
-                    <a href="#" id="account-info-link">Account Info</a> </br>
-                    <a href="my-movies.html" id="my-movies-link">My Movies</a></br>
+                    <a href="account-info.php" id="account-info-link">Account Info</a> </br>
+                    <a href="my-movies.php" id="my-movies-link">My Movies</a></br>
                     <a href="#" id="friends-link">Friends</a></br>
                     <a href="#" id="history-link">History</a></br>
                     <a href="#" id="settings-link">Settings</a></br>

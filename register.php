@@ -57,8 +57,10 @@
                 </div>
             </form>
         </div>
-        
+
+<?php session_start(); // make sessions available ?> 
 <?php 
+
 if (isset($_POST['btnaction']))
 {	
    try 
@@ -199,14 +201,14 @@ function insertData()
         
         $db_grab = $db->query("select Username from user_info where Username=$username");
         $user_in_db =  ($db_grab !== false) && ($db_grab->rowCount() > 0);  
-/*
+
         if ($pwd!=$pwd_confirm && !empty($_POST['username'] )){
             echo "<script type='text/javascript'>alert('passwords must be the same');</script>";
         }
         if ($user_in_db && !empty($_POST['username'] )){
             echo "<script type='text/javascript'>alert('username already exists. pick another');</script>";
         }  
-        */  
+         
      }
     
      if($pwd==$pwd_confirm && !$user_in_db){
@@ -220,7 +222,7 @@ function insertData()
         $statement->bindValue(':pwd', $pwd);
         $statement->execute();
         $statement->closeCursor();
-        header("Location: profile.php");
+        header("Location: login.php");
      }
 	
 	

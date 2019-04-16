@@ -31,6 +31,7 @@ Bittania Teshome (bt9nd)
 
 
     <body>
+    <?php session_start(); // make sessions available ?>
         <?php
         if ($_SERVER['REQUEST_METHOD'] == "POST")
         {	   
@@ -178,7 +179,7 @@ return;
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-md-4">
-                        <a class="register" a href="#">Don't have an account? Register here.</a>
+                        <a class="register" a href="register.php">Don't have an account? Register here.</a>
                     </div>
                 </div>
             </div>
