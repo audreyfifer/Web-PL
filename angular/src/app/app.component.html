@@ -22,70 +22,81 @@
 
         <!--Search form for user-->
         <div class="container">
-          <h1 id="search-title">Search</h1>       
-          <form name="mainform" class="form-container" >
+          <h1 id="search-title">Search</h1> 
+            <button type="button" [class.d-none]="!title.dirty||title.untouched" 
+                        class="search-criteria-item-button">x {{searchForm.value.title}}</button>
+            <button type="button" [class.d-none]="!genre.dirty||genre.untouched" 
+                        class="search-criteria-item-button">x {{searchForm.value.genre}}</button>
+            <button type="button" [class.d-none]="!releaseDate.dirty||releaseDate.untouched" 
+                        class="search-criteria-item-button">x {{searchForm.value.releaseDate}}</button>
+            <button type="button" [class.d-none]="!rating.dirty||rating.untouched" 
+                        class="search-criteria-item-button">x {{searchForm.value.rating}}</button>
+            <button type="button" [class.d-none]="!duration.dirty||duration.untouched" 
+                        class="search-criteria-item-button">x {{searchForm.value.duration}}</button>
+            <button type="button" [class.d-none]="!actors.dirty||actors.untouched" 
+                        class="search-criteria-item-button">x {{searchForm.value.actors}}</button>
+            <button type="button" [class.d-none]="!directors.dirty||directors.untouched" 
+                        class="search-criteria-item-button">x {{searchForm.value.directors}}</button>
+           
+          <!--{{ searchForm.value | json }} <br />
+            {{ searchModel | json }} <br />  -->  
+          <form #searchForm="ngForm"
+                  name="mainform" class="form-container" >
             <div class="form-group">
               <label for="movie-title">Title</label>
-              <input type="text" id="movie-title-input" class="form-control" name="desc" />
+              <input [(ngModel)]="searchModel.title" #title="ngModel" [class.is-invalid]="title.invalid"
+                            type="text" id="movie-title-input" class="form-control form-control-sm" 
+                            name="title" autofocus/>
               <span class="error" id="movie-title-note" value="" style="color:red"></span>        
             </div>
             
             <div class="form-group">
               <label for="genre">Genre</label>
-              <select id="genre" class="form-control" >
-                  <option value="select-genre" selected="selected" ></option>
-                  <option value="action" >Action</option>  <!-- set default selection -->
-                  <option value="adventure">Adventure</option>
-                  <option value="animation">Animation</option>
-                  <option value="comedy">Comedy</option>
-                  <option value="crime">Crime</option>
-                  <option value="drama">Drama</option>
-                  <option value="family">Family</option>
-                  <option value="fantasy">Fantasy</option>
-                  <option value="history">History</option>
-                  <option value="horror">Horror</option>
-                  <option value="romance">Romance</option>
-                  <option value="romantic-comedy">Romantic Comedy</option>
-                  <option value="suspense-thriller">Suspense/Thriller</option>
+              <select [(ngModel)]="searchModel.genre" #genre="ngModel" [class.is-invalid]="genre.invalid"
+                          id="genre" class="form-control form-control-sm" name="genre">
+                <option *ngFor="let genre of genres">{{genre}} </option>
                 </select> 
             </div>
             
             <div class="form-group">
               <label for="release-date">Release Date Year(s)</label>
-              <input type="text" id="release-date-input" class="form-control" />
+              <input [(ngModel)]="searchModel.releaseDate" #releaseDate="ngModel" [class.is-invalid]="releaseDate.invalid"
+                          name="releaseDate" type="text" id="release-date-input" class="form-control form-control-sm" />
               <span class="error" id="release-date-note" value="" style="color:red"></span>
             </div> 
             <div class="form-group">
                 <label for="rating">Rating</label>
-                <select id="rating" class="form-control" >
-                  <option value="select-rating" selected="selected" ></option>
-                  <option value="rating-g">G</option>  <!-- set default selection -->
-                  <option value="rating-pg">PG</option>
-                  <option value="rating-pg-13">PG-13</option>
-                  <option value="rating-r">R</option>
-                  <option value="rating-nr">NR/Unrated</option>
+                <select [(ngModel)]="searchModel.rating" #rating="ngModel" [class.is-invalid]="rating.invalid"
+                          name="rating" id="rating" class="form-control form-control-sm" >
+                  <option *ngFor="let rating of ratings">{{rating}} </option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="duration">Duration (minutes)</label>
-                <input type="text" id="duration-input" class="form-control" />
+                <input [(ngModel)]="searchModel.duration" #duration="ngModel" [class.is-invalid]="duration.invalid"
+                          name="duration" type="text" id="duration-input" class="form-control form-control-sm" /> 
+               
+             
               <span class="error" id="duration-note" value="" style="color:red"></span>
             </div> 
             <div class="form-group">
                 <label for="actors">Actors</label>
-                <input type="text" id="actors-input" class="form-control" />
-              <span class="error" id="actors-note" value="" style="color:red"></span>
+                <input [(ngModel)]="searchModel.actors" #actors="ngModel" [class.is-invalid]="actors.invalid"
+                          name="actors" type="text" id="actors-input" class="form-control form-control-sm" />
+                <span class="error" id="actors-note" value="" style="color:red"></span>
             </div>  
             <div class="form-group">
                 <label for="directors">Directors</label>
-                <input type="text" id="directors-input" class="form-control" />
+                <input [(ngModel)]="searchModel.directors" #directors="ngModel" [class.is-invalid]="directors.invalid"
+                          name="directors" type="text" id="directors-input" class="form-control form-control-sm" />
               <span class="error" id="directors-note" value="" style="color:red"></span>
             </div> 
-            
+
             <div class="search-button-class">
-              <input type="button" id="search-button" value="Search" onclick="submitSearch()"/>
+              <input type="button" id="search-button" value="Search" (click)="submitSearch()"/>
               </div>
           </form>
+          
           
         </div>
         
@@ -138,7 +149,7 @@
             window.location.href = 'movie-results.html';
           }
           
-            
+           
       </script>
 
 <router-outlet></router-outlet>

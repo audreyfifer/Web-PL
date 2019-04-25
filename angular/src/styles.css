@@ -68,6 +68,21 @@ label{
     margin-bottom:3px;
     border-radius:5px;
 }
+.search-criteria-item-button{
+    color:#fff;
+    background-color: #354753;
+    border-width: 1px;
+    border-style:solid;
+    border-color:rgba(255,255,255,.5);
+    font-size:1rem;
+    padding-left:10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 10px;
+    margin-right:10px;
+    margin-bottom:3px;
+    border-radius:5px;
+}
 
 #nav-link-login:hover,
 #nav-link-signup:hover,
