@@ -96,12 +96,12 @@ Bittania Teshome (bt9nd)
         <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>-->
         <script src="bootstrap-4.0.0/js/bootstrap.min.js"></script>
         <nav class="navbar navbar-expand-md bg-custom-header navbar-dark">
-            <a class="navbar-brand" href="home.html">
+            <a class="navbar-brand" href="home.php">
                 <img src="images/faces.png" id="logo_image" alt="image showing logo" class="img-responsive"><!--</br>-->
                 <span id="logo-text">MovieFinder</span>
             </a>
             <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
-                <a class="nav-link" id="nav-link-home" href="home.html">Home</a>
+                <a class="nav-link" id="nav-link-home" href="home.php">Home</a>
             </div>  
         </nav>
 

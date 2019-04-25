@@ -19,12 +19,12 @@
         <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>-->
         <script src="bootstrap-4.0.0/js/bootstrap.min.js"></script>
         <nav class="navbar navbar-expand-md bg-custom-header navbar-dark">
-            <a class="navbar-brand" href="home.html">
+            <a class="navbar-brand" href="home.php">
                 <img src="images/faces.png" id="logo_image" alt="image showing logo" class="img-responsive"><!--</br>-->
                 <span id="logo-text">MovieFinder</span>
             </a>
             <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
-                <a class="nav-link" id="nav-link-home" href="home.html">Home</a>
+                <a class="nav-link" id="nav-link-home" href="home.php">Home</a>
             </div>  
         </nav>
   <div class="container">
@@ -83,8 +83,6 @@ if (isset($_POST['btnaction']))
 }
 ?>
 
-
-
 <?php
 // require('connect-db.php');
 
@@ -92,31 +90,11 @@ if (isset($_POST['btnaction']))
 // include: if a required file is not found, include() thorws a warning, the rest of the script will run
 ?>
 
-
-<?php  
-/*************************/
-/** get data **/
-function selectData()
-{
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-}
-?>
-
 <?php 
 /*************************/
 /** create table **/
 function createTable()
 {
- 
     require('connect-db.php');
     
     $query = "CREATE TABLE user_info (
@@ -128,49 +106,16 @@ function createTable()
     $statement = $db->prepare($query);
     $statement->execute();
     $statement->closeCursor();
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
 ?>
 
 
-<?php 
-/*************************/
-/** drop table **/
-function dropTable()
-{
-  
-	require('connect-db.php');
-    
-    $query = "DROP TABLE user_info";
-    
-    $statement = $db->prepare($query);
-    $statement->execute();
-    $statement->closeCursor();
-	
-	
-	
-	
-	
-	
-	
-}
-?>
 
 <?php 
 /*************************/
 /** insert data **/
 function insertData()
 {
-    
-    
 	require('connect-db.php');
     
     $result = $db->query("SHOW TABLES LIKE 'user_info'");
@@ -182,92 +127,52 @@ function insertData()
     $firstname = "";
     $lastname = "";
     $username = "hello123";
-    $pwd = "yolo";
-    $confirm_pwd = "yolo";
+    $psw = "yolo";
+    $confirm_psw = "yolo";
     $user_in_db = true;
     
     if ($_SERVER['REQUEST_METHOD'] == "POST")
     {
-        if($_POST['firstname']){
+        if($_POST['firstname'])
+        {
             $firstname= $_POST['firstname'];
         }
-        if($_POST['lastname']){
+        if($_POST['lastname'])
+        {
             $lastname = $_POST['lastname'];
         }
      	
         $username = $_POST['username'] ;
-        $pwd = $_POST['psw'];
-        $pwd_confirm = 	$_POST['psw-confirm'];
+        $psw = $_POST['psw'];
+        $psw_confirm = 	$_POST['psw-confirm'];
         
         $db_grab = $db->query("select Username from user_info where Username='$username'");
         $user_in_db =  ($db_grab !== false) && ($db_grab->rowCount() > 0);  
 
-        if ($pwd!=$pwd_confirm && !empty($_POST['username'] )){
+        if ($psw!=$psw_confirm && !empty($_POST['username'] )){
             echo "<script type='text/javascript'>alert('passwords must be the same');</script>";
         }
         if ($user_in_db && !empty($_POST['username'] )){
             echo "<script type='text/javascript'>alert('username already exists. pick another');</script>";
-        }  
-         
+        }   
      }
     
-     if($pwd==$pwd_confirm && !$user_in_db){
+     if($psw==$psw_confirm && !$user_in_db){
         $query = "INSERT INTO user_info (FirstName, LastName, Username, Pw) 
-                    VALUES (:firstname, :lastname, :username, :pwd)";
+                    VALUES (:firstname, :lastname, :username, :psw)";
     
         $statement = $db->prepare($query);
         $statement->bindValue(':firstname', $firstname);
         $statement->bindValue(':lastname', $lastname);
         $statement->bindValue(':username', $username);
-        $statement->bindValue(':pwd', $pwd);
+        $statement->bindValue(':psw', $psw);
         $statement->execute();
         $statement->closeCursor();
         header("Location: login.php");
      }
 	
-	
-	
-	
 }
 ?>
-
-
-<?php
-/*************************/
-/** update data **/
-function updateData()
-{
-  
-	
-	
-	
-	
-	
-	
-	
-	
-	
-}
-?>
-
-<?php
-/*************************/
-/** delete data **/
-function deleteData()
-{
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-}
-?>
-
 
 
 </body>
