@@ -1,11 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule ,
-OnInit} from '@angular/core';
+import {  BrowserModule } from '@angular/platform-browser';
+import {  NgModule,
+          OnInit } from '@angular/core';
 import {  FormsModule,
-FormGroup,
-FormControl,
-Validators} from '@angular/forms';
-
+          FormGroup,
+          FormControl,
+          Validators} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -17,6 +18,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,39 +11,52 @@
     <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link" id="nav-link-login" href="#">Login</a>
+          <a class="nav-link" id="nav-link-login" (click)="navigateToLogin()">Login</a>
         </li>                                     
         <li class="nav-item"> 
-          <a class="nav-link" id="nav-link-signup" href="#">Sign Up</a>
+          <a class="nav-link" id="nav-link-signup" (click)="navigateToRegister()">Sign Up</a>
         </li>
       </ul>
     </div>  
   </nav>
-
+  <!--
+  Display data received from the back end <br/>
+  response data = {{ responsedata | json}}
+  <br/>
+  <hr/>
+  Data binding exercise 
+  <br/>
+  {{ searchForm.value | json }}
+  <br/>
+  {{ searchModel | json }} 
+  <hr/>-->
         <!--Search form for user-->
         <div class="container">
-          <h1 id="search-title">Search</h1> 
-            <button type="button" [class.d-none]="!title.dirty||title.untouched" 
-                        class="search-criteria-item-button">x {{searchForm.value.title}}</button>
-            <button type="button" [class.d-none]="!genre.dirty||genre.untouched" 
-                        class="search-criteria-item-button">x {{searchForm.value.genre}}</button>
-            <button type="button" [class.d-none]="!releaseDate.dirty||releaseDate.untouched" 
-                        class="search-criteria-item-button">x {{searchForm.value.releaseDate}}</button>
-            <button type="button" [class.d-none]="!rating.dirty||rating.untouched" 
-                        class="search-criteria-item-button">x {{searchForm.value.rating}}</button>
-            <button type="button" [class.d-none]="!duration.dirty||duration.untouched" 
-                        class="search-criteria-item-button">x {{searchForm.value.duration}}</button>
-            <button type="button" [class.d-none]="!actors.dirty||actors.untouched" 
-                        class="search-criteria-item-button">x {{searchForm.value.actors}}</button>
-            <button type="button" [class.d-none]="!directors.dirty||directors.untouched" 
-                        class="search-criteria-item-button">x {{searchForm.value.directors}}</button>
+          <!--<h1 id="search-title">Search</h1> -->
+            
            
           <!--{{ searchForm.value | json }} <br />
             {{ searchModel | json }} <br />  -->  
           <form #searchForm="ngForm"
                   name="mainform" class="form-container" >
-            <div class="form-group">
-              <label for="movie-title">Title</label>
+              <button type="button" [class.d-none]="!title.dirty||title.untouched" 
+                          class="search-criteria-item-button">x {{searchForm.value.title}}</button>
+              <button type="button" [class.d-none]="!genre.dirty||genre.untouched" 
+                          class="search-criteria-item-button">x {{searchForm.value.genre}}</button>
+              <button type="button" [class.d-none]="releaseDate.invalid||!releaseDate.dirty||releaseDate.untouched" 
+                          class="search-criteria-item-button">x {{searchForm.value.releaseDate}}</button>
+              <button type="button" [class.d-none]="!rating.dirty||rating.untouched" 
+                          class="search-criteria-item-button">x {{searchForm.value.rating}}</button>
+              <button type="button" [class.d-none]="!duration.dirty||duration.untouched" 
+                          class="search-criteria-item-button">x {{searchForm.value.duration}}</button>
+              <button type="button" [class.d-none]="!actors.dirty||actors.untouched" 
+                          class="search-criteria-item-button">x {{searchForm.value.actors}}</button>
+              <button type="button" [class.d-none]="!directors.dirty||directors.untouched" 
+                          class="search-criteria-item-button">x {{searchForm.value.directors}}</button>
+                    
+            
+              <div class="form-group">
+              <label for="movie-title-input">Title</label>
               <input [(ngModel)]="searchModel.title" #title="ngModel" [class.is-invalid]="title.invalid"
                             type="text" id="movie-title-input" class="form-control form-control-sm" 
                             name="title" autofocus/>
@@ -59,10 +72,12 @@
             </div>
             
             <div class="form-group">
-              <label for="release-date">Release Date Year(s)</label>
-              <input [(ngModel)]="searchModel.releaseDate" #releaseDate="ngModel" [class.is-invalid]="releaseDate.invalid"
-                          name="releaseDate" type="text" id="release-date-input" class="form-control form-control-sm" />
-              <span class="error" id="release-date-note" value="" style="color:red"></span>
+              <label for="release-date-input">Release Date Year(s)</label>
+              <input [(ngModel)]="searchModel.releaseDate" #releaseDate="ngModel" [class.is-invalid]="releaseDate.invalid&&releaseDate.errors"
+                          pattern="^([\t\s]*([12][0-9]{3}[s]?|[12][0-9]{3}'s|[12][0-9]{3}-[12][0-9]{3}|[0-9]{1}0s|[0-9]{1}0's)[\t\s]*)$"
+                          minlength="1" name="releaseDate" type="text" id="release-date-input" class="form-control form-control-sm" />
+              <small class="text-danger" [class.d-none]="releaseDate.untouched || releaseDate.valid ">
+                  Please enter date in one of the following formats: 1990, 1990-2000, 1990s, 1990's, 90s, 90's.</small>
             </div> 
             <div class="form-group">
                 <label for="rating">Rating</label>
@@ -74,10 +89,9 @@
             <div class="form-group">
                 <label for="duration">Duration (minutes)</label>
                 <input [(ngModel)]="searchModel.duration" #duration="ngModel" [class.is-invalid]="duration.invalid"
-                          name="duration" type="text" id="duration-input" class="form-control form-control-sm" /> 
-               
-             
-              <span class="error" id="duration-note" value="" style="color:red"></span>
+                          pattern="^[0-9]+$" name="duration" type="text" id="duration-input" class="form-control form-control-sm" /> 
+                <small class="text-danger" [class.d-none]="duration.untouched || duration.valid">
+                          Please enter a non-negative digit.</small>
             </div> 
             <div class="form-group">
                 <label for="actors">Actors</label>
@@ -93,63 +107,10 @@
             </div> 
 
             <div class="search-button-class">
-              <input type="button" id="search-button" value="Search" (click)="submitSearch()"/>
+              <button class="btn btn-primary" id="search-button" value="Search" (click)="senddata(searchForm.value)">Search</button>
               </div>
           </form>
           
           
         </div>
-        
-        <script type="text/javascript">
-
-          /* - verifies that:
-                1. at least one item is entered to search
-                2. release date is in the correct format (1990, 1990-2000, 1990s, 1990's, 90s, 90's) if entered
-                3. duration is a positive number 
-             - navigates to movie results page if inputs are valid
-          */
-          function submitSearch() {
-            var movie = document.getElementById("movie-title-input").value;
-            var release = document.getElementById("release-date-input").value;
-            var genre = document.getElementById("genre").value;
-            var rating = document.getElementById("rating").value;
-            var duration = document.getElementById("duration-input").value;
-            var actors = document.getElementById("actors-input").value;
-            var directors = document.getElementById("directors-input").value;
-            var tagged = false;
-
-            // displays pop-up window if no search criteria is entered
-            if (movie === "" && release === "" && genre === "select-genre" && rating === "select-rating" && duration === "" && actors === "" && directors === ""){
-              alert("Please enter search criteria");
-              return;
-            }
-            
-            // returns true if duration is a positive number
-            isValidDuration = (s)=> {return s.match(/^[0-9]+$/);};
-
-            // returns true if date is in correct format -- 1990, 1990-2000, 1990s, 1990's, 90s, 90's
-            isValidDate = (s) => {return s.match(/^([\t\s]*([12][0-9]{3}[s]?|[12][0-9]{3}'s|[12][0-9]{3}-[12][0-9]{3}|[0-9]{1}0s|[0-9]{1}0's)[\t\s]*)$/);};
-            
-            // displays error for user if date isn't in correct format
-            if (release!="" && !isValidDate(release)){
-              document.getElementById("release-date-note").innerHTML = "Please enter date in one of the following formats: 1990, 1990-2000, 1990s, 1990's, 90s, 90's";
-              tagged = true;
-            }
-
-            // displays error for user if duration isn't in correct format
-            if (duration!="" && !isValidDuration(duration)){
-              document.getElementById("duration-note").innerHTML = "Please enter a non-negative value.";
-              tagged = true;
-            }
-
-            // doesn't navigate to results page if at least one error in input
-            if (tagged){
-                return;
-            }
-            window.location.href = 'movie-results.html';
-          }
-          
-           
-      </script>
-
 <router-outlet></router-outlet>

@@ -31,7 +31,7 @@
       <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>-->
       <script src="bootstrap-4.0.0/js/bootstrap.min.js"></script>
      <nav class="navbar navbar-expand-md bg-custom-header navbar-dark">
-        <a class="navbar-brand" href="home.html">
+        <a class="navbar-brand" href="home.php">
           <img src="images/faces.png" id="logo_image" alt="image showing logo" class="img-responsive"><!--</br>-->
           <span id="logo-text">MovieFinder</span>
           </a>
@@ -42,11 +42,8 @@
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link" id="nav-link-login" href="login.html">Login</a>
+              <a class="nav-link" id="nav-link-home" href="home.php">home</a>
             </li>                                     
-            <li class="nav-item"> 
-              <a class="nav-link" id="nav-link-signup" href="#">Sign Up</a>
-            </li>
           </ul>
         </div>  
       </nav>
@@ -58,10 +55,10 @@
                         <span id="movie-info" style="float:left">
                           <div >
                             <!-- navigates to personal movie page when title is clicked -->
-                              <a href = "movies/the-patriot.html">The Patriot</a> <a>(2000)</a>    -    <a>72%</a></br>
-                              <a>Starring: Mel Gibson, Heath Ledger, Joely Richardson, Jason Isaacs</a>, etc</br>
-                              <a>Director: Roland Emmerich</a></br>
-                              <a>Action, Drama, History</a></br>
+                              <a href = "movies/the-patriot.html">The Patriot</a> <a>(2000)</a>    -    <a>72%</a><br/>
+                              <a>Starring: Mel Gibson, Heath Ledger, Joely Richardson, Jason Isaacs</a>, etc<br/>
+                              <a>Director: Roland Emmerich</a><br/>
+                              <a>Action, Drama, History</a><br/>
                           </div>
                     
                         </span>
@@ -82,10 +79,10 @@
                   <span id="movie-info" style="float:left">
                   <div >
                     <!-- navigates to personal movie page when title is clicked -->
-                      <a href = "movies/the-godfather.html">The Godfather</a> <a>(1972)</a>    -    <a>92%</a></br>
-                      <a>Starring: Marlon Brando, Al Pacino, James Caan, Robert Duvall</a>, etc</br>
-                      <a>Director: Francis Ford Coppola</a></br>
-                      <a>Crime, Drama</a></br>
+                      <a href = "movies/the-godfather.html">The Godfather</a> <a>(1972)</a>    -    <a>92%</a><br/>
+                      <a>Starring: Marlon Brando, Al Pacino, James Caan, Robert Duvall</a>, etc<br/>
+                      <a>Director: Francis Ford Coppola</a><br/>
+                      <a>Crime, Drama</a><br/>
   
                   </div>
                   </span>
@@ -104,10 +101,10 @@
                   <span id="movie-info" style="float:left">
                   <div >
                       <!-- navigates to personal movie page when title is clicked -->
-                      <a href = "movies/mulan.html">Mulan</a> <a>(1998)</a>    -    <a>76%</a></br>
-                      <a>Starring: Miguel Ferrer, Eddy Murphy, Lea Salonga</a>, etc</br>
-                      <a>Director: Tony Bancroft, Barry Cook</a></br>
-                      <a>Animation, Adventure, Family</a></br>
+                      <a href = "movies/mulan.html">Mulan</a> <a>(1998)</a>    -    <a>76%</a><br/>
+                      <a>Starring: Miguel Ferrer, Eddy Murphy, Lea Salonga</a>, etc<br/>
+                      <a>Director: Tony Bancroft, Barry Cook</a><br/>
+                      <a>Animation, Adventure, Family</a><br/>
   
                   </div>
                   </span>
@@ -123,10 +120,10 @@
                   <span id="movie-info" style="float:left">
                   <div >
                     <!-- navigates to personal movie page when title is clicked -->
-                      <a href = "movies/edward-scissorhands.html">Edward Scissorhands</a> <a>(1990)</a>    -    <a>79%</a></br>
-                      <a>Starring: Johnny Depp, Winona Ryder, Dianne Wiest</a>, etc</br>
-                      <a>Director: Tim Burton</a></br>
-                      <a>Drama, Fantasy, Romance</a></br>
+                      <a href = "movies/edward-scissorhands.html">Edward Scissorhands</a> <a>(1990)</a>    -    <a>79%</a><br/>
+                      <a>Starring: Johnny Depp, Winona Ryder, Dianne Wiest</a>, etc<br/>
+                      <a>Director: Tim Burton</a><br/>
+                      <a>Drama, Fantasy, Romance</a><br/>
   
                   </div>
                   </span>
@@ -142,10 +139,10 @@
                   <span id="movie-info" style="float:left">
                   <div >
                     <!-- navigates to personal movie page when title is clicked -->
-                      <a href = "movies/the-breakfast-club.html">The Breakfast Club</a> <a>(1985)</a>    -    <a>79%</a></br>
-                      <a>Starring: Molly Ringwald, Emilio Estevez, Anthony Michael Hall</a>, etc</br>
-                      <a>Director: John Hughes</a></br>
-                      <a>Comedy, Drama</a></br>
+                      <a href = "movies/the-breakfast-club.html">The Breakfast Club</a> <a>(1985)</a>    -    <a>79%</a><br/>
+                      <a>Starring: Molly Ringwald, Emilio Estevez, Anthony Michael Hall</a>, etc<br/>
+                      <a>Director: John Hughes</a><br/>
+                      <a>Comedy, Drama</a><br/>
                      
                   </div>
                   </span>

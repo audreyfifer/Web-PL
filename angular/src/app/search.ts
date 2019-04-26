@@ -1,4 +1,4 @@
-export class Search {
+export class Search{
     constructor(
        public title: string,
        public genre: string,
@@ -8,5 +8,4 @@ export class Search {
        public actors: string,
        public directors: string,
     ){}
-   
  }     

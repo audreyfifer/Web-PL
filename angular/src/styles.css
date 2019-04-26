@@ -1,23 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
 a{
     margin:0;
 }
-
 #logo_image{
     height: 8%;
     width: 8%;
 }
-
 #logo-text{
     font-size: 7vmin;
 }
-
 .col-md-4{
     display: block;
     margin: auto;
     text-align: center;
 }
-
 .search-button-class{
     display: flex;
     flex-direction: row;
@@ -25,35 +20,31 @@ a{
     justify-content: center;
     align-items: center;
 }
-
 #search-title{
     font-size:4vmin;
     color:#536f82;
 }
-
 .container{
     margin-left:10px;
     margin-top: 10px;
 }
-
 .form-container{
     margin-left:30px;
-    min-height:100%;
+    max-height:70%;
+    max-width:75%;
 }
-
+#movie-title-input{
+    min-width:80%;
+}
 label{
     margin-bottom:3px;
+    margin-right:10px;
 }
-
 .form-group{
     font-size:2vmin;
     margin-bottom:5px; 
 }
-
-#nav-link-login,
-#nav-link-signup,
-#nav-link-home,
-#search-button{
+#nav-link-login,#nav-link-signup,#nav-link-home,#search-button{
     color:#fff;
     background-color: #354753;
     border-width: 1px;
@@ -76,14 +67,14 @@ label{
     border-color:rgba(255,255,255,.5);
     font-size:1rem;
     padding-left:10px;
-    padding-top: 2px;
-    padding-bottom: 2px;
+    padding-top: 0px;
+    padding-bottom: 0px;
     padding-right: 10px;
     margin-right:10px;
-    margin-bottom:3px;
+    margin-bottom:0px;
+    margin-top:0px;
     border-radius:5px;
 }
-
 #nav-link-login:hover,
 #nav-link-signup:hover,
 #nav-link-home:hover,
@@ -93,11 +84,13 @@ label{
 #nav-link-home:focus
 #search-button:focus{
     background-color:#536f82;
+    cursor:pointer;
 }
-
 .navbar-brand {
-    padding: 0px; /* firefox bug fix */
-  }
+    padding: 0px; 
+    margin:0px;
+}
 .bg-custom-header{
-      background-color:#536f82;
+      background-color:#536f82; 
+      max-height:10%;
 }
