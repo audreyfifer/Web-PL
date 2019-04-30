@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="bootstrap-4.0.0/css/bootstrap.min.css" /> <!--if you downloaded bootstrap to your computer -->
     
-  <link rel="stylesheet" href="styles/main.css">
-      <link rel="stylesheet" href="styles/movie-results.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/movie-results.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>-->
     <script src="bootstrap-4.0.0/js/bootstrap.min.js"></script>
@@ -24,13 +24,32 @@
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+          <![endif]-->
+          <!--old color=354753-->
           
     <title>MovieFinder</title>
-    
+    <style>
+      .search-criteria-item-button{
+    color:#fff;
+    background-color: #859097;
+    font-size: 75%;
+    border-width: 1px;
+    border-style:solid;
+    border-color:rgba(255,255,255,.5);
+    padding-left:10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-right: 10px;
+    margin-right:10px;
+    margin-bottom:0px;
+    margin-top:0px;
+    border-radius:5px;
+}
+      </style>
   </head>
 
   <body onload="loadMovies()">
+  
     
    <nav class="navbar navbar-expand-md bg-custom-header navbar-dark">
       <a class="navbar-brand" href="home.html">
@@ -44,18 +63,30 @@
       <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link" id="nav-link-login" href="login.html">Login</a>
+            <a class="nav-link" id="nav-link-login" href="login.php">Login</a>
           </li>                                     
           <li class="nav-item"> 
-            <a class="nav-link" id="nav-link-signup" href="#">Sign Up</a>
+            <a class="nav-link" id="nav-link-signup" href="register.php">Sign Up</a>
           </li>
         </ul>
       </div>  
     </nav>
-
+    
         <div class="movie-results-container" id="movie-results-container" style="display:block">
-            <h1 id="search-title" style="margin-left:10px;margin-top:10px;">Search Results</h1>           
-        </div>   
+        <span >    
+        <h1 id="search-title" style="margin-left:10px;margin-top:10px;padding:0px;margin-right:auto;float:left">Search Results</h1>           
+</span>
+        <span style="margin-left:10px;margin-top:11px;padding:0px;margin-right:auto;float:left">
+        <button type="button" class="search-criteria-item-button" >x <?php if(isset($_GET['title']) ){echo $_GET['title'];}?></button>
+        <button type="button" class="search-criteria-item-button">x <?php if(isset($_GET['genre']) ){echo $_GET['genre'];}?></button>
+        <button type="button" class="search-criteria-item-button">x <?php if(isset($_GET['releaseDate']) ){echo $_GET['releaseDate'];}?></button>
+        <button type="button" class="search-criteria-item-button">x <?php if(isset($_GET['rating']) ){echo $_GET['rating'];}?></button>
+        <button type="button" class="search-criteria-item-button">x <?php if(isset($_GET['duration']) ){echo $_GET['duration'];}?></button>
+        <button type="button" class="search-criteria-item-button">x <?php if(isset($_GET['actors']) ){echo $_GET['actors'];}?></button>
+        <button type="button" class="search-criteria-item-button">x <?php if(isset($_GET['directors']) ){echo $_GET['directors'];}?></button>
+      </span>  
+      </div>
+
         <nav aria-label="Page navigation example" style="clear:both; margin-top:10%">
             <ul class="pagination justify-content-center">
                 <li class="page-item">

@@ -83,13 +83,6 @@ if (isset($_POST['btnaction']))
 }
 ?>
 
-<?php
-// require('connect-db.php');
-
-// require: if a required file is not found, reqire() produces a fatal error, the rest of the script won't run
-// include: if a required file is not found, include() thorws a warning, the rest of the script will run
-?>
-
 <?php 
 /*************************/
 /** create table **/
@@ -108,8 +101,6 @@ function createTable()
     $statement->closeCursor();
 }
 ?>
-
-
 
 <?php 
 /*************************/

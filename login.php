@@ -18,8 +18,6 @@ Bittania Teshome (bt9nd)
         <link rel="stylesheet" href="bootstrap-4.0.0/css/bootstrap.min.css" /> <!--if you downloaded bootstrap to your computer -->
         <link rel="stylesheet" href="styles/main.css">
         <link rel="stylesheet" href="styles/login.css">
-        
-
 
         <!-- required scripts for IE --> 
         <!--[if lt IE 9]>
@@ -101,7 +99,7 @@ Bittania Teshome (bt9nd)
                 <span id="logo-text">MovieFinder</span>
             </a>
             <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
-                <a class="nav-link" id="nav-link-home" href="home.php">Home</a>
+                <a class="nav-link" id="nav-link-home" href="http://localhost:4200">Home</a>
             </div>  
         </nav>
 

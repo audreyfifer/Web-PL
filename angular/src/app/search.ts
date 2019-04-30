@@ -6,6 +6,9 @@ export class Search{
        public rating: string,
        public duration: string,
        public actors: string,
-       public directors: string,
+       public directors: string
     ){}
+    getTitle(){
+       return this.title;
+    }
  }     

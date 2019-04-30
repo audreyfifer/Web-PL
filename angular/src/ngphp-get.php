@@ -20,5 +20,5 @@ foreach ($request as $k => $v)
 
 
 // send response (in json format) back the front end
-echo json_encode(['content'=>$data]);
+echo json_encode([$data]);
 ?>

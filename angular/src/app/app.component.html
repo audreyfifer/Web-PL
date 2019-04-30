@@ -21,7 +21,7 @@
   </nav>
   <!--
   Display data received from the back end <br/>
-  response data = {{ responsedata | json}}
+  response data = {{responsedata|json}}
   <br/>
   <hr/>
   Data binding exercise 
@@ -32,33 +32,39 @@
   <hr/>-->
         <!--Search form for user-->
         <div class="container">
-          <!--<h1 id="search-title">Search</h1> -->
-            
-           
+          <div style="min-width:100%;">
+            <span >    
+                <h1 id="search-title" style="margin-left:0px;margin-bottom:0px;margin-top:0px;padding:0px;margin-right:auto;float:left">Search</h1>           
+        </span>
+          <span style="margin-left:10px;margin-top:2px;padding:0px;float:left">
+          
+          <button type="button" *ngIf="searchModel.title!=''" 
+                    class="search-criteria-item-button">x {{searchForm.value.title}}</button>
+          <button type="button" *ngIf="searchModel.genre!=''"
+                    class="search-criteria-item-button">x {{searchForm.value.genre}}</button>
+          <button type="button" *ngIf="searchModel.releaseDate!=''"[class.d-none]="releaseDate.invalid" 
+                    class="search-criteria-item-button">x {{searchForm.value.releaseDate}}</button>
+          <button type="button" *ngIf="searchModel.rating!=''"
+                    class="search-criteria-item-button">x {{searchForm.value.rating}}</button>
+          <button type="button" *ngIf="searchModel.duration!=''"[class.d-none]="duration.invalid" 
+                    class="search-criteria-item-button">x {{searchForm.value.duration}}</button>
+          <button type="button" *ngIf="searchModel.actors!=''"
+                    class="search-criteria-item-button">x {{searchForm.value.actors}}</button>
+          <button type="button" *ngIf="searchModel.directors!=''"
+                    class="search-criteria-item-button">x {{searchForm.value.directors}}</button>
+               </span>  
+               </div>   
           <!--{{ searchForm.value | json }} <br />
             {{ searchModel | json }} <br />  -->  
-          <form #searchForm="ngForm"
+            <br/>
+          <form #searchForm="ngForm" action="http://localhost/Web-PL/movie-results.php" method="get"
                   name="mainform" class="form-container" >
-              <button type="button" [class.d-none]="!title.dirty||title.untouched" 
-                          class="search-criteria-item-button">x {{searchForm.value.title}}</button>
-              <button type="button" [class.d-none]="!genre.dirty||genre.untouched" 
-                          class="search-criteria-item-button">x {{searchForm.value.genre}}</button>
-              <button type="button" [class.d-none]="releaseDate.invalid||!releaseDate.dirty||releaseDate.untouched" 
-                          class="search-criteria-item-button">x {{searchForm.value.releaseDate}}</button>
-              <button type="button" [class.d-none]="!rating.dirty||rating.untouched" 
-                          class="search-criteria-item-button">x {{searchForm.value.rating}}</button>
-              <button type="button" [class.d-none]="!duration.dirty||duration.untouched" 
-                          class="search-criteria-item-button">x {{searchForm.value.duration}}</button>
-              <button type="button" [class.d-none]="!actors.dirty||actors.untouched" 
-                          class="search-criteria-item-button">x {{searchForm.value.actors}}</button>
-              <button type="button" [class.d-none]="!directors.dirty||directors.untouched" 
-                          class="search-criteria-item-button">x {{searchForm.value.directors}}</button>
-                    
+          
             
               <div class="form-group">
-              <label for="movie-title-input">Title</label>
+              <label for="title">Title</label>
               <input [(ngModel)]="searchModel.title" #title="ngModel" [class.is-invalid]="title.invalid"
-                            type="text" id="movie-title-input" class="form-control form-control-sm" 
+                            type="text" id="title" class="form-control form-control-sm" 
                             name="title" autofocus/>
               <span class="error" id="movie-title-note" value="" style="color:red"></span>        
             </div>
@@ -75,8 +81,8 @@
               <label for="release-date-input">Release Date Year(s)</label>
               <input [(ngModel)]="searchModel.releaseDate" #releaseDate="ngModel" [class.is-invalid]="releaseDate.invalid&&releaseDate.errors"
                           pattern="^([\t\s]*([12][0-9]{3}[s]?|[12][0-9]{3}'s|[12][0-9]{3}-[12][0-9]{3}|[0-9]{1}0s|[0-9]{1}0's)[\t\s]*)$"
-                          minlength="1" name="releaseDate" type="text" id="release-date-input" class="form-control form-control-sm" />
-              <small class="text-danger" [class.d-none]="releaseDate.untouched || releaseDate.valid ">
+                           minlength="1" name="releaseDate" type="text" id="release-date-input" class="form-control form-control-sm" />
+              <small [ngStyle]="{'color':'red'}" *ngIf="releaseDate.invalid">
                   Please enter date in one of the following formats: 1990, 1990-2000, 1990s, 1990's, 90s, 90's.</small>
             </div> 
             <div class="form-group">
@@ -87,23 +93,22 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="duration">Duration (minutes)</label>
+                <label for="duration">Duration Maximum (minutes)</label>
                 <input [(ngModel)]="searchModel.duration" #duration="ngModel" [class.is-invalid]="duration.invalid"
                           pattern="^[0-9]+$" name="duration" type="text" id="duration-input" class="form-control form-control-sm" /> 
-                <small class="text-danger" [class.d-none]="duration.untouched || duration.valid">
+                <small [ngStyle]="{'color':'red'}" *ngIf="duration.invalid">
                           Please enter a non-negative digit.</small>
             </div> 
             <div class="form-group">
                 <label for="actors">Actors</label>
                 <input [(ngModel)]="searchModel.actors" #actors="ngModel" [class.is-invalid]="actors.invalid"
                           name="actors" type="text" id="actors-input" class="form-control form-control-sm" />
-                <span class="error" id="actors-note" value="" style="color:red"></span>
             </div>  
             <div class="form-group">
                 <label for="directors">Directors</label>
                 <input [(ngModel)]="searchModel.directors" #directors="ngModel" [class.is-invalid]="directors.invalid"
                           name="directors" type="text" id="directors-input" class="form-control form-control-sm" />
-              <span class="error" id="directors-note" value="" style="color:red"></span>
+              
             </div> 
 
             <div class="search-button-class">

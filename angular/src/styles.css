@@ -25,11 +25,12 @@ a{
     color:#536f82;
 }
 .container{
-    margin-left:10px;
+    margin-left:0px;
     margin-top: 10px;
 }
 .form-container{
     margin-left:30px;
+    margin-top:10px;
     max-height:70%;
     max-width:75%;
 }
@@ -61,11 +62,11 @@ label{
 }
 .search-criteria-item-button{
     color:#fff;
-    background-color: #354753;
+    background-color: #859097;
+    font-size: 75%;
     border-width: 1px;
     border-style:solid;
     border-color:rgba(255,255,255,.5);
-    font-size:1rem;
     padding-left:10px;
     padding-top: 0px;
     padding-bottom: 0px;
