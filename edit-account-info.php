@@ -12,19 +12,33 @@
         <link rel="stylesheet" href="styles/main.css">
         <link rel="stylesheet" href="styles/register.css">
   
-  <title>Edit Account</title>    
+  <title>MovieFinder</title>    
 </head>
 <body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>-->
         <script src="bootstrap-4.0.0/js/bootstrap.min.js"></script>
+        <?php 
+        session_start();
+        if(!isset($_SESSION['user'])){
+            header('Location: login.php');
+        }
+        ?>
         <nav class="navbar navbar-expand-md bg-custom-header navbar-dark">
-            <a class="navbar-brand" href="home.php">
+            <a class="navbar-brand" href="http://localhost:4200">
                 <img src="images/faces.png" id="logo_image" alt="image showing logo" class="img-responsive"><!--</br>-->
                 <span id="logo-text">MovieFinder</span>
             </a>
             <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
-                <a class="nav-link" id="nav-link-home" href="home.php">Home</a>
+                
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-link-home" href="http://localhost:4200">Home</a>
+                    </li>                                     
+                    <li class="nav-item"> 
+                        <a class="nav-link" id="nav-link-home" href="profile.php">Profile</a>
+                    </li>
+                </ul>
             </div>  
         </nav>
   <div class="container">

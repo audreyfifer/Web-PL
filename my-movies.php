@@ -27,11 +27,18 @@
     </head>
   
     <body>
+    <?php session_start();?>
+    <?php 
+        if(!isset($_SESSION['user'])){
+            header('Location: login.php');
+        }
+        ?>
+
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>-->
       <script src="bootstrap-4.0.0/js/bootstrap.min.js"></script>
      <nav class="navbar navbar-expand-md bg-custom-header navbar-dark">
-        <a class="navbar-brand" href="home.php">
+        <a class="navbar-brand" href="http://localhost:4200">
           <img src="images/faces.png" id="logo_image" alt="image showing logo" class="img-responsive"><!--</br>-->
           <span id="logo-text">MovieFinder</span>
           </a>
@@ -40,22 +47,26 @@
         </button>
         
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link" id="nav-link-home" href="home.php">home</a>
-            </li>                                     
-          </ul>
-        </div>  
+                
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-link-home" href="http://localhost:4200">Home</a>
+                    </li>                                     
+                    <li class="nav-item"> 
+                        <a class="nav-link" id="nav-link-home" href="profile.php">Profile</a>
+                    </li>
+                </ul>
+            </div>   
       </nav>
   
           <div class="my-movies-container" style="display:block;">
                 <h1 id="search-title" style="margin-left:10px;margin-top:10px;">My Movies</h1>  
                 <div class="movie-item"  id="the-patriot" style="display:block">
-                        <img src = "images/movie-placeholder.png" id="movie-result" alt="image showing logo" class="img-responsive" style="float:left">
+                        <img src = "images/the-patriot.jpg" id="movie-result" alt="image showing logo" class="img-responsive" style="float:left; height:6%; width:6%;">
                         <span id="movie-info" style="float:left">
                           <div >
                             <!-- navigates to personal movie page when title is clicked -->
-                              <a href = "movies/the-patriot.html">The Patriot</a> <a>(2000)</a>    -    <a>72%</a><br/>
+                              <a href = "movies/the-patriot.php">The Patriot</a> <a>(2000)</a>    -    <a>72%</a><br/>
                               <a>Starring: Mel Gibson, Heath Ledger, Joely Richardson, Jason Isaacs</a>, etc<br/>
                               <a>Director: Roland Emmerich</a><br/>
                               <a>Action, Drama, History</a><br/>
@@ -75,11 +86,11 @@
                 <h1 id="search-title" style="margin-left:10px;margin-top:10px;">Recommendations</h1>  
                 
               <div class="movie-item" id="the-godfather" style="display:block; clear:both;">
-                  <img src = "images/movie-placeholder.png" id="movie-result" alt="image showing logo" class="img-responsive" style="float:left">
+                  <img src = "images/the-godfather.jpg" id="movie-result" alt="image showing logo" class="img-responsive" style="float:left; height:6%; width:6%;">
                   <span id="movie-info" style="float:left">
                   <div >
                     <!-- navigates to personal movie page when title is clicked -->
-                      <a href = "movies/the-godfather.html">The Godfather</a> <a>(1972)</a>    -    <a>92%</a><br/>
+                      <a href = "movies/the-godfather.php">The Godfather</a> <a>(1972)</a>    -    <a>92%</a><br/>
                       <a>Starring: Marlon Brando, Al Pacino, James Caan, Robert Duvall</a>, etc<br/>
                       <a>Director: Francis Ford Coppola</a><br/>
                       <a>Crime, Drama</a><br/>
@@ -97,11 +108,11 @@
             </div> 
         
             <div class="movie-item" id="mulan" style="display:block; clear:both;">
-                  <img src = "images/movie-placeholder.png" id="movie-result" alt="image showing logo" class="img-responsive" style="float:left">
+                  <img src = "images/mulan.jpg" id="movie-result" alt="image showing logo" class="img-responsive" style="float:left; height:6%; width:6%;">
                   <span id="movie-info" style="float:left">
                   <div >
                       <!-- navigates to personal movie page when title is clicked -->
-                      <a href = "movies/mulan.html">Mulan</a> <a>(1998)</a>    -    <a>76%</a><br/>
+                      <a href = "movies/mulan.php">Mulan</a> <a>(1998)</a>    -    <a>76%</a><br/>
                       <a>Starring: Miguel Ferrer, Eddy Murphy, Lea Salonga</a>, etc<br/>
                       <a>Director: Tony Bancroft, Barry Cook</a><br/>
                       <a>Animation, Adventure, Family</a><br/>
@@ -116,11 +127,11 @@
                     <i class="fa fa-plus-square fa-lg" id="plus-button"></i></a>
             </div> 
             <div class="movie-item" id="edward-scissorhands" style="display:block; clear:both;">
-                  <img src = "images/movie-placeholder.png" id="movie-result" alt="image showing logo" class="img-responsive" style="float:left">
+                  <img src = "images/edward-scissorhands.jpg" id="movie-result" alt="image showing logo" class="img-responsive" style="float:left; height:6%; width:6%;">
                   <span id="movie-info" style="float:left">
                   <div >
                     <!-- navigates to personal movie page when title is clicked -->
-                      <a href = "movies/edward-scissorhands.html">Edward Scissorhands</a> <a>(1990)</a>    -    <a>79%</a><br/>
+                      <a href = "movies/edward-scissorhands.php">Edward Scissorhands</a> <a>(1990)</a>    -    <a>79%</a><br/>
                       <a>Starring: Johnny Depp, Winona Ryder, Dianne Wiest</a>, etc<br/>
                       <a>Director: Tim Burton</a><br/>
                       <a>Drama, Fantasy, Romance</a><br/>
@@ -135,11 +146,11 @@
                     <i class="fa fa-plus-square fa-lg" id="plus-button"></i></a>
             </div> 
             <div class="movie-item" id="the-breakfast-club"style="display:block; clear:both;">
-                  <img src = "images/movie-placeholder.png" id="movie-result" alt="image showing logo" class="img-responsive" style="float:left">
+                  <img src = "images/the-breakfast-club.jpg" id="movie-result" alt="image showing logo" class="img-responsive" style="float:left; height:6%; width:6%;">
                   <span id="movie-info" style="float:left">
                   <div >
                     <!-- navigates to personal movie page when title is clicked -->
-                      <a href = "movies/the-breakfast-club.html">The Breakfast Club</a> <a>(1985)</a>    -    <a>79%</a><br/>
+                      <a href = "movies/the-breakfast-club.php">The Breakfast Club</a> <a>(1985)</a>    -    <a>79%</a><br/>
                       <a>Starring: Molly Ringwald, Emilio Estevez, Anthony Michael Hall</a>, etc<br/>
                       <a>Director: John Hughes</a><br/>
                       <a>Comedy, Drama</a><br/>

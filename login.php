@@ -31,7 +31,10 @@ Bittania Teshome (bt9nd)
 
 
     <body>
-    <?php session_start(); // make sessions available ?>
+    <?php session_start(); // make sessions available 
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Headers: X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding');
+    header('Access-Control-Allow-Methods: POST');?>
         <?php
         if ($_SERVER['REQUEST_METHOD'] == "POST")
         {	   
@@ -69,6 +72,14 @@ Bittania Teshome (bt9nd)
                     // setcookie('psw', md5($psw), time()+3600);  // create a hash conversion of password values using md5() function
                     $_SESSION['user'] = $user;
                     $_SESSION['psw'] = $psw;
+                    $_SESSION['logged_in'] = true;
+                    
+                    $jsonString = file_get_contents('C:/xampp/htdocs/Web-PL/angular/src/assets/logged_in.json');
+                    $data = json_decode($jsonString, true);
+                    $data[0]['logged_in'] = "true";
+                    $newJsonString = json_encode($data);
+                    file_put_contents('C:/xampp/htdocs/Web-PL/angular/src/assets/logged_in.json', $newJsonString);
+                   
                     // redirect the browser to another page using the header() function to specify the target URL
                     header('Location: profile.php');
                 }
@@ -94,7 +105,7 @@ Bittania Teshome (bt9nd)
         <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>-->
         <script src="bootstrap-4.0.0/js/bootstrap.min.js"></script>
         <nav class="navbar navbar-expand-md bg-custom-header navbar-dark">
-            <a class="navbar-brand" href="home.php">
+            <a class="navbar-brand" href="http://localhost:4200">
                 <img src="images/faces.png" id="logo_image" alt="image showing logo" class="img-responsive"><!--</br>-->
                 <span id="logo-text">MovieFinder</span>
             </a>

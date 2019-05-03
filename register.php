@@ -19,12 +19,12 @@
         <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>-->
         <script src="bootstrap-4.0.0/js/bootstrap.min.js"></script>
         <nav class="navbar navbar-expand-md bg-custom-header navbar-dark">
-            <a class="navbar-brand" href="home.php">
+            <a class="navbar-brand" href="http://localhost:4200">
                 <img src="images/faces.png" id="logo_image" alt="image showing logo" class="img-responsive"><!--</br>-->
                 <span id="logo-text">MovieFinder</span>
             </a>
             <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
-                <a class="nav-link" id="nav-link-home" href="home.php">Home</a>
+                <a class="nav-link" id="nav-link-home" href="http://localhost:4200">Home</a>
             </div>  
         </nav>
   <div class="container">
@@ -159,9 +159,25 @@ function insertData()
         $statement->bindValue(':psw', $psw);
         $statement->execute();
         $statement->closeCursor();
-        header("Location: login.php");
+
+        setSessionVariables($username,$psw);
+        header("Location: profile.php");
      }
 	
+}
+?>
+<?php 
+function setSessionVariables($user, $psw){
+    $_SESSION['user'] = $user;
+    $_SESSION['psw'] = $psw;
+    setcookie("username","");
+    setcookie("psw","");
+    
+    $jsonString = file_get_contents('C:/xampp/htdocs/Web-PL/angular/src/assets/logged_in.json');
+    $data = json_decode($jsonString, true);
+    $data[0]['logged_in'] = "true";
+    $newJsonString = json_encode($data);
+    file_put_contents('C:/xampp/htdocs/Web-PL/angular/src/assets/logged_in.json', $newJsonString);
 }
 ?>
 

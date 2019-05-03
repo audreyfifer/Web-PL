@@ -26,16 +26,22 @@
     </head>
   
     <body>
+    <?php 
+    session_start();
+        if(!isset($_SESSION['user'])){
+            header('Location: login.php');
+        }
+        ?>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>-->
       <script src="bootstrap-4.0.0/js/bootstrap.min.js"></script>
       <nav class="navbar navbar-expand-md bg-custom-header navbar-dark">
-            <a class="navbar-brand" href="home.php">
+            <a class="navbar-brand" href="http://localhost:4200">
               <img src="images/faces.png" id="logo_image" alt="image showing logo" class="img-responsive"><!--</br>-->
               <span id="logo-text">MovieFinder</span>
               </a>
             <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
-                <a class="nav-link" id="nav-link-home" href="home.php">Home</a>
+                <a class="nav-link" id="nav-link-home" href="http://localhost:4200">Home</a>
             </div>  
         </nav>
     
@@ -47,12 +53,12 @@
             
                 <div style="margin-left:20%; margin-top:20%">
                   <!-- currently only My Movies link navigates to an actual page -->
-                    <a href="account-info.php" id="account-info-link">Account Info</a> </br>
-                    <a href="my-movies.php" id="my-movies-link">My Movies</a></br>
-                    <a href="#" id="friends-link">Friends</a></br>
-                    <a href="#" id="history-link">History</a></br>
-                    <a href="#" id="settings-link">Settings</a></br>
-                    <a href="logout-home.php" id="settings-link">Logout</a></br>
+                    <a href="account-info.php" id="account-info-link">Account Info</a> <br/>
+                    <a href="my-movies.php" id="my-movies-link">My Movies</a><br/>
+                    <a href="#" id="friends-link">Friends</a><br/>
+                    <a href="#" id="history-link">History</a><br/>
+                    <a href="#" id="settings-link">Settings</a><br/>
+                    <a href="logout-home.php" id="settings-link">Logout</a><br/>
                 </div> 
             </span> 
         </div>

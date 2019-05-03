@@ -9,14 +9,18 @@
     </button>
     
     <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link" id="nav-link-login" (click)="navigateToLogin()">Login</a>
-        </li>                                     
-        <li class="nav-item"> 
-          <a class="nav-link" id="nav-link-signup" (click)="navigateToRegister()">Sign Up</a>
-        </li>
-      </ul>
+          
+            <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-link-login" *ngIf="logged_in==true" (click)="navigateToHome()">Home</a>
+                        <a class="nav-link" id="nav-link-login" *ngIf="logged_in==false" (click)="navigateToLogin()">Login</a>
+                    </li>                                     
+                    <li class="nav-item"> 
+                        <a class="nav-link" id="nav-link-login" *ngIf="logged_in==true" (click)="navigateToProfile()">Profile</a>
+                        <a class="nav-link" id="nav-link-login" *ngIf="logged_in==false" (click)="navigateToRegister()">Sign Up</a>
+                    </li>
+                </ul>
+         
     </div>  
   </nav>
   <!--
@@ -45,9 +49,9 @@
           <button type="button" *ngIf="searchModel.releaseDate!=''"[class.d-none]="releaseDate.invalid" 
                     class="search-criteria-item-button">x {{searchForm.value.releaseDate}}</button>
           <button type="button" *ngIf="searchModel.rating!=''"
-                    class="search-criteria-item-button">x {{searchForm.value.rating}}</button>
+                    class="search-criteria-item-button">x Rated {{searchForm.value.rating}}</button>
           <button type="button" *ngIf="searchModel.duration!=''"[class.d-none]="duration.invalid" 
-                    class="search-criteria-item-button">x {{searchForm.value.duration}}</button>
+                    class="search-criteria-item-button">x {{searchForm.value.duration}} minutes</button>
           <button type="button" *ngIf="searchModel.actors!=''"
                     class="search-criteria-item-button">x {{searchForm.value.actors}}</button>
           <button type="button" *ngIf="searchModel.directors!=''"

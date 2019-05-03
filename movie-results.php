@@ -49,10 +49,10 @@
   </head>
 
   <body onload="loadMovies()">
-  
+  <?php session_start();?>
     
    <nav class="navbar navbar-expand-md bg-custom-header navbar-dark">
-      <a class="navbar-brand" href="home.html">
+      <a class="navbar-brand" href="http://localhost:4200">
         <img src="images/faces.png" id="logo_image" alt="image showing logo" class="img-responsive"><!--</br>-->
         <span id="logo-text">MovieFinder</span>
         </a>
@@ -61,15 +61,35 @@
       </button>
       
       <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">   
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link" id="nav-link-login" href="login.php">Login</a>
-          </li>                                     
-          <li class="nav-item"> 
-            <a class="nav-link" id="nav-link-signup" href="register.php">Sign Up</a>
-          </li>
-        </ul>
-      </div>  
+        
+            <ul class="nav flex-column">
+                    
+                    <?php 
+                        if(isset($_SESSION['user'])) {
+                          echo '
+                          <li class="nav-item">
+                              <a class="nav-link" id="nav-link-login" href="http://localhost:4200">Home</a>
+                          </li>                                     
+                          <li class="nav-item"> 
+                              <a class="nav-link" id="nav-link-login" href="profile.php">Profile</a>
+                          </li>
+                          ';
+                        }
+                        else{
+                          echo '
+                          <li class="nav-item">
+                              <a class="nav-link" id="nav-link-login" href="login.php">Login</a>
+                          </li>                                     
+                          <li class="nav-item"> 
+                              <a class="nav-link" id="nav-link-login" href="register.php">Sign Up</a>
+                          </li>
+                          ';
+                        }
+                        ?>
+                    
+                </ul>
+              
+            </div> 
     </nav>
     
         <div class="movie-results-container" id="movie-results-container" style="display:block">
@@ -77,13 +97,31 @@
         <h1 id="search-title" style="margin-left:10px;margin-top:10px;padding:0px;margin-right:auto;float:left">Search Results</h1>           
 </span>
         <span style="margin-left:10px;margin-top:11px;padding:0px;margin-right:auto;float:left">
-        <button type="button" class="search-criteria-item-button" >x <?php if(isset($_GET['title']) ){echo $_GET['title'];}?></button>
-        <button type="button" class="search-criteria-item-button">x <?php if(isset($_GET['genre']) ){echo $_GET['genre'];}?></button>
-        <button type="button" class="search-criteria-item-button">x <?php if(isset($_GET['releaseDate']) ){echo $_GET['releaseDate'];}?></button>
-        <button type="button" class="search-criteria-item-button">x <?php if(isset($_GET['rating']) ){echo $_GET['rating'];}?></button>
-        <button type="button" class="search-criteria-item-button">x <?php if(isset($_GET['duration']) ){echo $_GET['duration'];}?></button>
-        <button type="button" class="search-criteria-item-button">x <?php if(isset($_GET['actors']) ){echo $_GET['actors'];}?></button>
-        <button type="button" class="search-criteria-item-button">x <?php if(isset($_GET['directors']) ){echo $_GET['directors'];}?></button>
+        <?php
+          if(isset($_GET['title'])) {
+              echo '<button type="button" class="search-criteria-item-button">'. 'x '. $_GET['title']. '</button>';
+          }
+          if(isset($_GET['genre'])) {
+            echo '<button type="button" class="search-criteria-item-button">'. 'x '. $_GET['genre']. '</button>';
+          }
+          if(isset($_GET['releaseDate'])) {
+            echo '<button type="button" class="search-criteria-item-button">'. 'x '. $_GET['releaseDate']. ' </button>';
+          }
+          if(isset($_GET['rating'])) {
+            echo '<button type="button" class="search-criteria-item-button">'. 'x Rated '. $_GET['rating']. '</button>';
+          }
+          if(isset($_GET['duration'])) {
+            echo '<button type="button" class="search-criteria-item-button">'. 'x '. $_GET['duration']. 'minutes</button>';
+          }
+          if(isset($_GET['actors'])) {
+            echo '<button type="button" class="search-criteria-item-button">'. 'x '. $_GET['actors']. '</button>';
+          }
+          if(isset($_GET['directors'])) {
+            echo '<button type="button" class="search-criteria-item-button">'. 'x '. $_GET['directors']. '</button>';
+          }
+        
+          ?>
+          
       </span>  
       </div>
 
@@ -162,22 +200,30 @@
                 var img = document.createElement('img');
                 
                 // uses default movie image
-                img.src = "images/movie-placeholder.png";
+                img.src = "images/"+  parsedName + ".jpg";
                 img.id = "movie-result";
                 img.alt = "image showing movie poster";
                 img.class="img-responsive";
-                img.style="float:left";
+                img.style="float:left; height:6%; width: 6%;";
 
-                // link html object for adding movies to My Movies
-                var a = document.createElement('a');
-                a.href = "my-movies.html";
-                a.style = "float:right; margin-right:5%";
                 
-                // appends image to link object                
-                var btn = document.createElement('img');
-                btn.src = "images/add-to-my-movies-button.png";
-                btn.style="height:60%; width:60%; border-radius:10px;float:right;margin-right:10%";
-                a.appendChild(btn);
+                // check for the user to be logged in before showing the Add to My Movies button
+                var logged_in = checkCookie();
+                var a = document.createElement('a');
+                if(logged_in){
+                  // link html object for adding movies to My Movies
+                  a.style = "float:right; margin-right:5%";
+                  a.href = "my-movies.php";
+                  
+                  // appends image to link object                
+                  var btn = document.createElement('img');
+                  btn.src = "images/add-to-my-movies-button.png";
+                  btn.style="height:50%; width:50%; border-radius:8px;float:right;margin-right:10%; margin-top:5%";
+                  a.appendChild(btn);
+                
+                }
+                
+                
                 
                 // creates movie item container for housing the movie image, movie description, and add-movie button
                 var divMovieItem = document.createElement('div');
@@ -186,14 +232,17 @@
 
                 divMovieItem.appendChild(img);
                 divMovieItem.appendChild(span);
-                divMovieItem.appendChild(a);
+                if(logged_in){
+                  divMovieItem.appendChild(a);
+                }
+                
 
                 // appends movie item to the parent element
                 container.appendChild(divMovieItem);
 
                 // creates an event listener for navigating to personal movie page when clicking on the title
                 document.getElementById(parsedName).addEventListener("click", (function(){
-                    window.location.href = "movies/" + this.id + '.html';
+                    window.location.href = "movies/" + this.id + '.php';
                 }), false); 
               }
 
@@ -214,6 +263,16 @@
                 }
               }
               return str;
+            }
+
+            function checkCookie(){
+              var logged_in = 
+              "<?php 
+                if(isset($_SESSION['user'])){
+                  echo true;
+                }
+                ?>";
+              return logged_in;
             }
             
             // list of example movies to be displayed dynamically
