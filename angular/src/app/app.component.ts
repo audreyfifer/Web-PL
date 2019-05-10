@@ -2,12 +2,14 @@ declare var require: any
 import { Component, OnInit } from '@angular/core';
 import { Search } from './search';
 import { User } from './user';
+//import { UserService } from './user.service';
 
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
+  //providers: [UserService]
 })
 export class AppComponent implements OnInit{
   title = 'angular';
@@ -17,12 +19,21 @@ export class AppComponent implements OnInit{
             'Fantasy', 'History', 'Horror', 'Romance', 'Romantic Comedy', 'Suspense/Thriller'];
   ratings = ['','G', 'PG', 'PG-13', 'R', 'NR/Unrated'];
   
-  searchModel = new Search('The Patriot', 'Action', '2000', 'R', '200', 'Mel Gibson', 'Roland Emmerich');
-  userModel = new User('false');
+  searchModel = new Search('The Patriot', '', '', '', '', '', '');
+  //userModel = new User('false');
   logged_in=false;
+  logged=false;
 
+  //constructor(private userService: UserService) { }
+  
+  //getLoggedIn(): void {
+  //  this.logged = this.userService.logged=="true";
+  //}
+  
   constructor(private http: HttpClient) { }
   
+  
+
   getSessionData() {
     var data = require('C:/xampp/htdocs/Web-PL/angular/src/assets/logged_in.json');
     this.logged_in = data[0]['logged_in']=="true";
@@ -81,7 +92,7 @@ export class AppComponent implements OnInit{
         window.location.href = 'http://localhost/Web-PL/movie-results.php'+string;
         
      }, (error) => {
-        //console.log('Error', error);
+        console.log('Error', error);
      })
      
      

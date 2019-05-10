@@ -68,7 +68,7 @@ function createTable()
     }
 
     $array = array();
-    if (($handle = fopen("C:/xampp/htdocs/Web-PL/imdb_csv_files/title_basics.csv", "r")) !== FALSE) {
+    if (($handle = fopen("C:/xampp/htdocs/Web-PL/imdb_csv_files/title_basics1.csv", "r")) !== FALSE) {
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
                array_push($array,$data[0]. ",". $data[1]. ",". $data[2]. ",".  $data[3]. ",". 
                 $data[4]. ",".  $data[5]. ",".  $data[6]. ",".  $data[7]. ",".  $data[8]);
@@ -87,7 +87,7 @@ function createTable()
                 $endYear=$data[6];
                 $runtimeMinutes=$data[7];
                 $genre=$data[8];
-                echo $tconst. $titleType. $primaryTitle. $originalTitle. $isAdult. $startYear. $endYear. "<br />";
+                //echo $tconst. $titleType. $primaryTitle. $originalTitle. $isAdult. $startYear. $endYear. "<br />";
                 
                 $sql = "INSERT INTO title_basics (tconst, titleType, primaryTitle, originalTitle,isAdult, startYear, endYear, runtimeMinutes, genre) VALUES (:tconst, :titleType, :primaryTitle, :originalTitle,:isAdult, :startYear, :endYear, :runtimeMinutes, :genre);";
                 

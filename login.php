@@ -18,6 +18,7 @@ Bittania Teshome (bt9nd)
         <link rel="stylesheet" href="bootstrap-4.0.0/css/bootstrap.min.css" /> <!--if you downloaded bootstrap to your computer -->
         <link rel="stylesheet" href="styles/main.css">
         <link rel="stylesheet" href="styles/login.css">
+        <link rel="icon" href="images/favicon.ico" type="image/ico">
 
         <!-- required scripts for IE --> 
         <!--[if lt IE 9]>
@@ -116,9 +117,9 @@ Bittania Teshome (bt9nd)
 
         <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST"  name="loginform" class="form-container-login" >
 
-            <div class="login-container">
-                <div class="row justify-content-center">
-                    <div class="col-md-4">
+            <div class="login-container ">
+                <div class="row justify-content-center ">
+                    <div class="col-md-4 ">
                         <img src="images/login-profile.png" alt="login profile image" class="login-profile">
                     </div>
 
@@ -138,44 +139,10 @@ Bittania Teshome (bt9nd)
                     </div>
 
                 </div>
-                <div class="row justify-content-center" >
+                <div class="row justify-content-center" style="margin-top:1%;margin-left:8%">
                     <div class="col-md-4">
                         <input type="submit" value="Login" name="login" class="btn btn-light"  >
-                        
-                       <input type="checkbox" name="remember" id="remember" >Remember Me
-
-                        <!-- uses anonymous function-->
-                        <!--
-<input type="button" class="login-button" onclick="(function(){
-var psw = document.getElementById('psw-input').value;
-var username = document.getElementById('username-input').value;
-
-// if password and username not entered, display appropriate error
-if (psw === '' && username === ''){
-document.getElementById('login-note').innerHTML = 'Please enter a username and password.';
-return;
-}
-
-// if only password isn't entered, display appropriate error
-if (psw === ''){
-document.getElementById('login-note').innerHTML = 'Please enter a password.';
-return;
-}
-
-// if only username isn't entered, display appropriate error
-if (username === ''){
-document.getElementById('login-note').innerHTML = 'Please enter a username.';
-return;
-}
-
-// navigate to profile page if appropriate login information is entered
-//location.href='profile.html';
-
-})();" name="login" value='Login'>
--->
-
-                        <!--location.href='loggedin_home.html'-->
-
+                       <input type="checkbox" name="remember" id="remember"style="margin-left:2%" ><a style="font-size:85%;">Remember Me</a>
                     </div>
                 </div>
                 <div class="row justify-content-center">
@@ -183,14 +150,14 @@ return;
                         <span class="error" id="login-note" value="" style="color:red"></span>
                     </div>
                 </div>
-                <div class="row justify-content-center">
+                <div class="row justify-content-center" style="margin-top:2%;">
                     <div class="col-md-4">
-                        <a class="psw" a href="#">Forgot password?</a>
+                        <a class="psw" a href="#" style="font-size:80%">Forgot password?</a>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-md-4">
-                        <a class="register" a href="register.php">Don't have an account? Register here.</a>
+                        <a class="register" a href="register.php" style="font-size:80%">Don't have an account? Register here.</a>
                     </div>
                 </div>
             </div>

@@ -23,18 +23,7 @@
          
     </div>  
   </nav>
-  <!--
-  Display data received from the back end <br/>
-  response data = {{responsedata|json}}
-  <br/>
-  <hr/>
-  Data binding exercise 
-  <br/>
-  {{ searchForm.value | json }}
-  <br/>
-  {{ searchModel | json }} 
-  <hr/>-->
-        <!--Search form for user-->
+ 
         <div class="container">
           <div style="min-width:100%;">
             <span >    
@@ -58,8 +47,8 @@
                     class="search-criteria-item-button">x {{searchForm.value.directors}}</button>
                </span>  
                </div>   
-          <!--{{ searchForm.value | json }} <br />
-            {{ searchModel | json }} <br />  -->  
+          
+               
             <br/>
           <form #searchForm="ngForm" action="http://localhost/Web-PL/movie-results.php" method="get"
                   name="mainform" class="form-container" >

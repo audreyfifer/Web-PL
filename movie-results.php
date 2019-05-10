@@ -19,6 +19,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>-->
     <script src="bootstrap-4.0.0/js/bootstrap.min.js"></script>
+    <link rel="icon" href="images/favicon.ico" type="image/ico">
 
     <!-- required scripts for IE --> 
     <!--[if lt IE 9]>

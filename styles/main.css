@@ -52,7 +52,8 @@ label{
 #nav-link-login,
 #nav-link-signup,
 #nav-link-home,
-#search-button{
+#search-button,
+#login-button{
     color:#fff;
     background-color: #354753;
     border-width: 1px;
@@ -72,10 +73,12 @@ label{
 #nav-link-signup:hover,
 #nav-link-home:hover,
 #search-button:hover,
+#login-button:hover,
 #nav-link-login:focus,
 #nav-link-signup:focus
 #nav-link-home:focus
-#search-button:focus{
+#search-button:focus,
+#login-button:focus{
     background-color:#536f82;
 }
 

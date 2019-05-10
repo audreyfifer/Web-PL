@@ -13,6 +13,7 @@ Bittania Teshome (bt9nd)
         <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" /> -->  
         <link rel="stylesheet" href="bootstrap-4.0.0/css/bootstrap.min.css" /> <!--if you downloaded bootstrap to your computer -->
         <link rel="stylesheet" href="styles/main.css">
+        <link rel="icon" href="images/favicon.ico" type="image/ico">
 
         <!-- required scripts for IE --> 
         <!--[if lt IE 9]>
